@@ -39,7 +39,7 @@
 						</div>
 						<div class="user_box ml-auto">
 							<div class="user_box_login user_box_link"><a href="#">login</a></div>
-							<div class="user_box_register user_box_link"><a href="registor.html">register</a></div>
+							<div class="user_box_register user_box_link"><a href="{% url 'registor.html' %}">register</a></div>
 						</div>
 					</div>
 				</div>
@@ -57,11 +57,11 @@
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="index.html">home</a></li>
-								<li class="main_nav_item"><a href="about.html">about us</a></li>
-								<li class="main_nav_item"><a href="offers.html">offers</a></li>
-								<li class="main_nav_item"><a href="blog.html">news</a></li>
-								<li class="main_nav_item"><a href="contact.html">contact</a></li>
+								<li class="main_nav_item"><a href="{% url 'index.html' %}">home</a></li>
+								<li class="main_nav_item"><a href="{% url 'about.html' %}">about us</a></li>
+								<li class="main_nav_item"><a href="{% url 'offers.html' %}">offers</a></li>
+								<li class="main_nav_item"><a href="{% url 'blog.html' %}">news</a></li>
+								<li class="main_nav_item"><a href="{% url 'contact.html' %}">contact</a></li>
 							</ul>
 						</div>
 						<div class="content_search ml-lg-0 ml-auto">
@@ -107,11 +107,11 @@
 			<div class="menu_close_container"><div class="menu_close"></div></div>
 			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
 			<ul>
-				<li class="menu_item"><a href="index.html">home</a></li>
-				<li class="menu_item"><a href="about.html">about us</a></li>
-				<li class="menu_item"><a href="offers.html">offers</a></li>
-				<li class="menu_item"><a href="blog.html">news</a></li>
-				<li class="menu_item"><a href="contact.html">contact</a></li>
+				<li class="menu_item"><a href="{% url 'index.html' %}">home</a></li>
+				<li class="menu_item"><a href="{% url 'about.html' %}">about us</a></li>
+				<li class="menu_item"><a href="{% url 'offers.html' %}">offers</a></li>
+				<li class="menu_item"><a href="{% url 'blog.html' %}">news</a></li>
+				<li class="menu_item"><a href="{% url 'contact.html' %}">contact</a></li>
 			</ul>
 		</div>
 	</div>
@@ -141,7 +141,7 @@
 									<div class="button"><div class="button_bcg"></div><a href="#">see more<span></span><span></span><span></span></a></div>
 									<div class="button button_color_1 trans_200"><a href="#">see more<span></span><span></span><span></span></a></div>
 									<div class="button button_color_2 trans_200"><a href="#">see more<span></span><span></span><span></span></a></div>
-									<div class="button button_line_1 trans_200"><a href="#" class="trans_200">see more<span></span><span></span><span></span></a></div>
+									<div class="button button_line_1 trans_200"><a href="{% url '#' %}" class="trans_200">see more<span></span><span></span><span></span></a></div>
 								</div>
 							</div>
 						</div>
@@ -398,7 +398,7 @@
 							<div class="footer_blog_item clearfix">
 								<div class="footer_blog_image"><img src="images/footer_blog_1.jpg" alt="https://unsplash.com/@avidenov"></div>
 								<div class="footer_blog_content">
-									<div class="footer_blog_title"><a href="blog.html">Travel with us this year</a></div>
+									<div class="footer_blog_title"><a href="{% url 'blog.html' %}">Travel with us this year</a></div>
 									<div class="footer_blog_date">Nov 29, 2017</div>
 								</div>
 							</div>
@@ -407,7 +407,7 @@
 							<div class="footer_blog_item clearfix">
 								<div class="footer_blog_image"><img src="images/footer_blog_2.jpg" alt="https://unsplash.com/@deannaritchie"></div>
 								<div class="footer_blog_content">
-									<div class="footer_blog_title"><a href="blog.html">New destinations for you</a></div>
+									<div class="footer_blog_title"><a href="{% url 'blog.html' %}">New destinations for you</a></div>
 									<div class="footer_blog_date">Nov 29, 2017</div>
 								</div>
 							</div>
@@ -416,7 +416,7 @@
 							<div class="footer_blog_item clearfix">
 								<div class="footer_blog_image"><img src="images/footer_blog_3.jpg" alt="https://unsplash.com/@bergeryap87"></div>
 								<div class="footer_blog_content">
-									<div class="footer_blog_title"><a href="blog.html">Travel with us this year</a></div>
+									<div class="footer_blog_title"><a href="{% url 'blog.html' %}">Travel with us this year</a></div>
 									<div class="footer_blog_date">Nov 29, 2017</div>
 								</div>
 							</div>
@@ -460,7 +460,7 @@
 								</li>
 								<li class="contact_info_item d-flex flex-row">
 									<div><div class="contact_info_icon"><img src="images/message.svg" alt=""></div></div>
-									<div class="contact_info_text"><a href="mailto:contactme@gmail.com?Subject=Hello" target="_top">contactme@gmail.com</a></div>
+									<div class="contact_info_text"><a href="{% url 'mailto:contactme@gmail.com?Subject=Hello' %}" target="_top">contactme@gmail.com</a></div>
 								</li>
 								<li class="contact_info_item d-flex flex-row">
 									<div><div class="contact_info_icon"><img src="images/planet-earth.svg" alt=""></div></div>
@@ -491,10 +491,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					<div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
 						<div class="footer_nav">
 							<ul class="footer_nav_list">
-								<li class="footer_nav_item"><a href="index.html">home</a></li>
-								<li class="footer_nav_item"><a href="about.html">about us</a></li>
-								<li class="footer_nav_item"><a href="offers.html">offers</a></li>
-								<li class="footer_nav_item"><a href="blog.html">news</a></li>
+								<li class="footer_nav_item"><a href="{% url 'index.html' %}">home</a></li>
+								<li class="footer_nav_item"><a href="{% url 'about.html' %}">about us</a></li>
+								<li class="footer_nav_item"><a href="{% url 'offers.html' %}">offers</a></li>
+								<li class="footer_nav_item"><a href="{% url 'blog.html' %}">news</a></li>
 								<li class="footer_nav_item"><a href="#">contact</a></li>
 							</ul>
 						</div>

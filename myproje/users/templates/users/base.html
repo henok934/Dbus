@@ -35,8 +35,8 @@
 							</ul>
 						</div>
 						<div class="user_box ml-auto">
-							<div class="user_box_login user_box_link"><a href="login">login</a></div>
-							<div class="user_box_register user_box_link"><a href="registor">register</a></div>
+							<div class="user_box_login user_box_link"><a href="{% url 'login' %}">login</a></div>
+							<div class="user_box_register user_box_link"><a href="{% url 'registor' %}">register</a></div>
 							<!-- Search Contents -->			
 						</div>
 					</div>
@@ -53,10 +53,10 @@
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="home">home</a></li>
-                                                                <li class="main_nav_item"><a href="book">book</a></li>
-                                                                <li class="main_nav_item"><a href="get_ticket">Show Tickets</a></li>
-                                                                <li class="main_nav_item"><a href="logout">logout</a></li>
+								<li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'book' %}">book</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'get_ticket' %}">Show Tickets</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'logout' %}">logout</a></li>
 							</ul>
 						</div>
 						<div class="content_search ml-lg-0 ml-auto">
@@ -98,10 +98,10 @@
 			<div class="menu_close_container"><div class="menu_close"></div></div>
 			<div class="logo menu_logo"><a href="#"><img src="../static/images/logo.png" alt=""></a></div>
 			<ul>
-			<li class="main_nav_item"><a href="home">home</a></li>
-                        <li class="main_nav_item"><a href="book">book</a></li>
-                        <li class="main_nav_item"><a href="get_ticket">Show Tickets</a></li>
-                        <li class="main_nav_item"><a href="logout">logout</a></li>
+			<li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                        <li class="main_nav_item"><a href="{% url 'book' %}">book</a></li>
+                        <li class="main_nav_item"><a href="{% url 'get_ticket' %}">Show Tickets</a></li>
+                        <li class="main_nav_item"><a href="{% url 'logout' %}">logout</a></li>
 			</ul>
 		</div>
 	</div>
@@ -142,10 +142,10 @@
 			<div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
 				<div class="footer_nav">
 					<ul class="footer_nav_list">
-						<li class="main_nav_item"><a href="home">home</a></li>
-                                                <li class="main_nav_item"><a href="book">book</a></li>
-                                                <li class="main_nav_item"><a href="get_ticket">Show Tickets</a></li>
-                                                <li class="main_nav_item"><a href="logout">logout</a></li>
+						<li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                                                <li class="main_nav_item"><a href="{% url 'book' %}">book</a></li>
+                                                <li class="main_nav_item"><a href="{% url 'get_ticket' %}">Show Tickets</a></li>
+                                                <li class="main_nav_item"><a href="{% url 'logout' %}">logout</a></li>
 					</ul>
 				</div>
 			</div>

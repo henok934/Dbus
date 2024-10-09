@@ -38,8 +38,8 @@
                                                         </ul>
                                                 </div>
 						<div class="user_box ml-auto">
-                                                        <div class="user_box_login user_box_link"><a href="login">login</a></div>
-                                                        <div class="user_box_register user_box_link"><a href="registor">register</a></div>
+                                                        <div class="user_box_login user_box_link"><a href="{% url 'login' %}">login</a></div>
+                                                        <div class="user_box_register user_box_link"><a href="{% url 'registor' %}">register</a></div>
                                                 </div>
 
                                         </div>
@@ -56,8 +56,8 @@
                                                 </div>
                                                 <div class="main_nav_container ml-auto">
                                                         <ul class="main_nav_list">
-                                                          	<li class="main_nav_item"><a href="home">home</a></li>
-                           				  	<li class="main_nav_item"><a href="logout">Logout</a></li>
+                                                          	<li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                           				  	<li class="main_nav_item"><a href="{% url 'logout' %}">Logout</a></li>
                                                           </ul>
                                                 </div>
                                                 <div class="content_search ml-lg-0 ml-auto">
@@ -99,34 +99,36 @@
                         <div class="menu_close_container"><div class="menu_close"></div></div>
                         <div class="logo menu_logo"><a href="#"><img src="../static/images/logo.png" alt=""></a></div>
                         <ul>
-                         <li class="main_nav_item"><a href="home">home</a></li>
-                           <li class="main_nav_item"><a href="businsert">Register Bus</a></li>
-                           <li class="main_nav_item"><a href="route">Registor Route</a></li>
-                           <li class="main_nav_item"><a href="updatebus">Bus Update</a></li>
-                           <li class="footer_nav_item"><a href="admin" style="color:white;">Create Admin</a></li>
-                           <li class="footer_nav_item"><a href="city" style="color:white;">Registor City</a></li>
+                         <li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                           <li class="main_nav_item"><a href="{% url 'businsert' %}">Register Bus</a></li>
+                           <li class="main_nav_item"><a href="{% url 'route' %}">Registor Route</a></li>
+                           <li class="main_nav_item"><a href="{% url 'updatebus' %}">Bus Update</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'admins' %}" style="color:white;">Create Admin</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'city' %}" style="color:white;">Registor City</a></li>
                            <select onchange="location.href = this.value;">
-                           <option value="admindelete">Select for Show</option>
-                           <option value="routes">show routes</option>
-                           <option value="users">show Users</option>
-                           <option value="buses">show Buses</option>
-                           <option value="comments">All Comments</option>
+                           <option value="{% url 'admindelete' %}">Select for Show</option>
+                           <option value="{% url 'routes' %}">show routes</option>
+                           <option value="{% url 'users' %}">show Users</option>
+                           <option value="{% url 'buses' %}">show Buses</option>
+    <option value="{% url 'driver' %}">Drivers</option>
+    <option value="{% url 'driver' %}">Drivers</option>
+                           <option value="{% url 'comments' %}">All Comments</option>
                            </select>
                            <select onchange="location.href = this.value;">
-                           <option value="admindelete">Select for Delete</option>
-                           <option value="admindelete">Delete Admin</option>
-                           <option value="commentdelete">Delete Comment</option>
-                           <option value="busdelete">Delete Bus</option>
-                           <option value="citydelete">Delete City</option>
-                           <option value="routedelete">Delete Route</option>
+                           <option value="{% url 'admindelete' %}">Select for Delete</option>
+                           <option value="{% url 'admindelete' %}">Delete Admin</option>
+                           <option value="{% url 'commentdelete' %}">Delete Comment</option>
+                           <option value="{% url 'busdelete' %}">Delete Bus</option>
+                           <option value="{% url 'citydelete' %}">Delete City</option>
+                           <option value="{% url 'routedelete' %}">Delete Route</option>
                            </select>
-                           <li class="footer_nav_item"><a href="logout" style="color:white;margin-left:50px;">Logout</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'logout' %}" style="color:white;margin-left:50px;">Logout</a></li>
                            <!--
-                           <li class="footer_nav_item"><a href="changebus" style="color:white;">Bus change</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'changebus' %}" style="color:white;">Bus change</a></li>
                            -->
-                           <li class="footer_nav_item"><a href="/changebus" style="color:white;">Bus change</a></li>
-                            <li class="main_nav_item"><a href="ticketinfo">Booked tickets</a></li>
-                            <li class="main_nav_item"><a href="changebus">news</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'changebus' %}" style="color:white;">Bus change</a></li>
+                            <li class="main_nav_item"><a href="{% url 'ticketinfo' %}">Booked tickets</a></li>
+                            <li class="main_nav_item"><a href="{% url 'changebus' %}">news</a></li>
 
                         </ul>
                 </div>
@@ -140,10 +142,12 @@
   <h3>Signature -------------------</h3>
   <h3>Date ------------------------</h3>
   <h1 style="margin-left:300px;color:brown;"><b>Show Tickets Info</b></h1><br />
-{% if routes %}
-  {% set first_route = routes[0] %}
-  <p>From: {{ first_route[3] }} To: {{ first_route[4] }} Date: {{ first_route[5] }}</p>
+	{% if routes %}
+  <p>From: {{ routes.0.depcity }} To: {{ routes.0.descity }} Date: {{ routes.0.date }}</p>
+{% else %}
+  <p>No booked tickets available for this route.</p>
 {% endif %}
+
   <table border="2">
     <thead>
       <tr style="background-color: white;">
@@ -165,17 +169,17 @@
       {% for route in routes %}
       <tr>
         <td style="background-color: green;"><h3><b style="color: yellow;">{{ loop.index }}</b></h3></td>
-        <td><p> <b style="color: green;">{{ route[0] }} </b></p></td>
-        <td> <p> <b style="color: green;"> {{ route[1] }} </b></p></td>
-        <td> <p> <b style="color: green;"> {{ route[2] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[3] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[4] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[5] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[6] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[7] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[8] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[9] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[14] }} </b></p></td>
+        <td><p> <b style="color: green;">{{ route.firstname}} </b></p></td>
+        <td> <p> <b style="color: green;"> {{ route.lastname }} </b></p></td>
+        <td> <p> <b style="color: green;"> {{ route.phone }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.depcity }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.descity }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.date }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.no_seat }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.price }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.side_no }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.plate_no }} </b></p></td>
+        <td> <p> <b style="color: green;"></b></p></td>
       </tr>
       {% endfor %}
     </tbody>
@@ -210,34 +214,36 @@
                                         <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
                                                 <div class="footer_nav">
                                                         <ul class="footer_nav_list">
-                                                         <li class="main_nav_item"><a href="home">home</a></li>
-                           <li class="main_nav_item"><a href="businsert">Register Bus</a></li>
-                           <li class="main_nav_item"><a href="route">Registor Route</a></li>
-                           <li class="main_nav_item"><a href="updatebus">Bus Update</a></li>
-                           <li class="footer_nav_item"><a href="admin" style="color:white;">Create Admin</a></li>
-                           <li class="footer_nav_item"><a href="city" style="color:white;">Registor City</a></li>
+                                                         <li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                           <li class="main_nav_item"><a href="{% url 'businsert' %}">Register Bus</a></li>
+                           <li class="main_nav_item"><a href="{% url 'route' %}">Registor Route</a></li>
+                           <li class="main_nav_item"><a href="{% url 'updatebus' %}">Bus Update</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'admins' %}" style="color:white;">Create Admin</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'city' %}" style="color:white;">Registor City</a></li>
                            <select onchange="location.href = this.value;">
-                           <option value="admindelete">Select for Show</option>
-                           <option value="routes">show routes</option>
-                           <option value="users">show Users</option>
-                           <option value="buses">show Buses</option>
-                           <option value="comments">All Comments</option>
+                           <option value="{% url 'admindelete' %}">Select for Show</option>
+                           <option value="{% url 'routes' %}">show routes</option>
+                           <option value="{% url 'users' %}">show Users</option>
+                           <option value="{% url 'buses' %}">show Buses</option>
+    <option value="{% url 'driver' %}">Drivers</option>
+    <option value="{% url 'driver' %}">Drivers</option>
+                           <option value="{% url 'comments' %}">All Comments</option>
                            </select>
                            <select onchange="location.href = this.value;">
-                           <option value="admindelete">Select for Delete</option>
-                           <option value="admindelete">Delete Admin</option>
-                           <option value="commentdelete">Delete Comment</option>
-                           <option value="busdelete">Delete Bus</option>
-                           <option value="citydelete">Delete City</option>
-                           <option value="routedelete">Delete Route</option>
+                           <option value="{% url 'admindelete' %}">Select for Delete</option>
+                           <option value="{% url 'admindelete' %}">Delete Admin</option>
+                           <option value="{% url 'commentdelete' %}">Delete Comment</option>
+                           <option value="{% url 'busdelete' %}">Delete Bus</option>
+                           <option value="{% url 'citydelete' %}">Delete City</option>
+                           <option value="{% url 'routedelete' %}">Delete Route</option>
                            </select>
-                           <li class="footer_nav_item"><a href="logout" style="color:white;margin-left:50px;">Logout</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'logout' %}" style="color:white;margin-left:50px;">Logout</a></li>
                            <!--
-                           <li class="footer_nav_item"><a href="changebus" style="color:white;">Bus change</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'changebus' %}" style="color:white;">Bus change</a></li>
                            -->
-                           <li class="footer_nav_item"><a href="/changebus" style="color:white;">Bus change</a></li>
-                            <li class="main_nav_item"><a href="ticketinfo">Booked Tickets</a></li>
-                            <li class="main_nav_item"><a href="changebus">news</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'changebus' %}" style="color:white;">Bus change</a></li>
+                            <li class="main_nav_item"><a href="{% url 'ticketinfo' %}">Booked Tickets</a></li>
+                            <li class="main_nav_item"><a href="{% url 'changebus' %}">news</a></li>
 
                                                         </ul>
                                                 </div>

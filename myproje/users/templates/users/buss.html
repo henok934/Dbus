@@ -41,8 +41,8 @@
 							</ul>
 						</div>
 						<div class="user_box ml-auto">
-							<div class="user_box_login user_box_link"><a href="login.html">login</a></div>
-							<div class="user_box_register user_box_link"><a href="registor.html">register</a></div>
+							<div class="user_box_login user_box_link"><a href="{% url 'login.html' %}">login</a></div>
+							<div class="user_box_register user_box_link"><a href="{% url 'registor.html' %}">register</a></div>
 							<div class="search7">
 		
 
@@ -92,12 +92,12 @@
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="index.html">home</a></li>
-								<li class="main_nav_item"><a href="about.html">about us</a></li>
-								<li class="main_nav_item"><a href="offers.html">offers</a></li>
-								<li class="main_nav_item"><a href="blog.html">news</a></li>
-								<li class="main_nav_item"><a href="comment.html">comment</a></li>
-								<li class="main_nav_item"><a href="contact.html">contact</a></li>
+								<li class="main_nav_item"><a href="{% url 'index.html' %}">home</a></li>
+								<li class="main_nav_item"><a href="{% url 'about.html' %}">about us</a></li>
+								<li class="main_nav_item"><a href="{% url 'offers.html' %}">offers</a></li>
+								<li class="main_nav_item"><a href="{% url 'blog.html' %}">news</a></li>
+								<li class="main_nav_item"><a href="{% url 'comment.html' %}">comment</a></li>
+								<li class="main_nav_item"><a href="{% url 'contact.html' %}">contact</a></li>
 							</ul>
 						</div>
 						<div class="content_search ml-lg-0 ml-auto">
@@ -143,12 +143,12 @@
 			<div class="menu_close_container"><div class="menu_close"></div></div>
 			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt="">guzo</a></div>
 			<ul>
-				<li class="menu_item"><a href="index.html">home</a></li>
-				<li class="menu_item"><a href="about.html">about us</a></li>
-				<li class="menu_item"><a href="offers.html">offers</a></li>
-				<li class="menu_item"><a href="blog.html">news</a></li>
-				<li class="menu_item"><a href="registor.html">comment</a></li>
-				<li class="menu_item"><a href="contact.html">contact</a></li>
+				<li class="menu_item"><a href="{% url 'index.html' %}">home</a></li>
+				<li class="menu_item"><a href="{% url 'about.html' %}">about us</a></li>
+				<li class="menu_item"><a href="{% url 'offers.html' %}">offers</a></li>
+				<li class="menu_item"><a href="{% url 'blog.html' %}">news</a></li>
+				<li class="menu_item"><a href="{% url 'registor.html' %}">comment</a></li>
+				<li class="menu_item"><a href="{% url 'contact.html' %}">contact</a></li>
 			</ul>
 		</div>
 	</div>
@@ -311,10 +311,10 @@
 				<div class="footer_nav">
 					<ul class="footer_nav_list">
 						<li class="footer_nav_item"><a href="#">home</a></li>
-						<li class="footer_nav_item"><a href="about.html">about us</a></li>
-						<li class="footer_nav_item"><a href="offers.html">offers</a></li>
-						<li class="footer_nav_item"><a href="blog.html">news</a></li>
-						<li class="footer_nav_item"><a href="contact.html">contact</a></li>
+						<li class="footer_nav_item"><a href="{% url 'about.html' %}">about us</a></li>
+						<li class="footer_nav_item"><a href="{% url 'offers.html' %}">offers</a></li>
+						<li class="footer_nav_item"><a href="{% url 'blog.html' %}">news</a></li>
+						<li class="footer_nav_item"><a href="{% url 'contact.html' %}">contact</a></li>
 					</ul>
 				</div>
 			</div>

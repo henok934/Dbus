@@ -38,8 +38,8 @@
                                                         </ul>
                                                 </div>
 						<div class="user_box ml-auto">
-                                                        <div class="user_box_login user_box_link"><a href="login">login</a></div>
-                                                        <div class="user_box_register user_box_link"><a href="registor">register</a></div>
+                                                        <div class="user_box_login user_box_link"><a href="{% url 'login' %}">login</a></div>
+                                                        <div class="user_box_register user_box_link"><a href="{% url 'registor' %}">register</a></div>
                                                 </div>
 
                                         </div>
@@ -53,39 +53,45 @@
                                         <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
                                                 <div class="logo_container">
                                                         <div class="logo"><a href="#"><img src="../static/images/logo.png" alt="">ticket</a></div>
-                                                </div>
-                                                <div class="main_nav_container ml-auto">
-                                                        <ul class="main_nav_list">
-                                                          <li class="main_nav_item"><a href="home">home</a></li>
-                           <li class="main_nav_item"><a href="businsert">Register Bus</a></li>
-                           <li class="main_nav_item"><a href="route">Registor Route</a></li>
-                           <li class="main_nav_item"><a href="updatebus">Bus Update</a></li>
-                           <li class="footer_nav_item"><a href="admin" style="color:white;">Create Admin</a></li>
-                           <li class="footer_nav_item"><a href="city" style="color:white;">Registor City</a></li>
+                           </div>
+                           <div class="main_nav_container ml-auto">
+                           <ul class="main_nav_list">
+                           <li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
                            <select onchange="location.href = this.value;">
-                           <option value="admindelete">Select for Show</option>
-                           <option value="routes">show routes</option>
-                           <option value="users">show Users</option>
-                           <option value="buses">show Buses</option>
-                           <option value="comments">All Comments</option>
+                           <option value="#">Select for Register</option>
+                           <option value="{% url 'businsert' %}">Register Bus</option>
+                           <option value="{% url 'route' %}">Register Routes</option>
+                           <option value="{% url 'admins' %}">Register Admin</option>
+                           <option value="{% url 'city' %}">Register City</option>
+                           <option value="{% url 'admins' %}">Register Admin </option>
+                           <option value="{% url 'worker' %}">Register Driver</option>
+                           </select>
+                          <select onchange="location.href = this.value;">
+                          <option value="#">Select for Update</option>
+                           <option value="{% url 'updatebus' %}">Update Side_no</option>
+                           <option value="{% url 'changebus' %}">Change Bus</option>
                            </select>
                            <select onchange="location.href = this.value;">
-                           <option value="admindelete">Select for Delete</option>
-                           <option value="admindelete">Delete Admin</option>
-                           <option value="commentdelete">Delete Comment</option>
-                           <option value="busdelete">Delete Bus</option>
-                           <option value="citydelete">Delete City</option>
-                           <option value="routedelete">Delete Route</option>
+                           <option value="{% url 'admindelete' %}">Select for Show</option>
+                           <option value="{% url 'routes' %}">show routes</option>
+                           <option value="{% url 'users' %}">show Users</option>
+                           <option value="{% url 'buses' %}">show Buses</option>
+                           <option value="{% url 'comments' %}">Show Comments</option>
+                           <option value="{% url 'driver' %}">Driver</option>
+                           <option value="{% url 'ticketinfo' %}">Booked Ticket</option>
                            </select>
-                           <li class="footer_nav_item"><a href="logout" style="color:white;margin-left:50px;">Logout</a></li>
-                           <!--
-                           <li class="footer_nav_item"><a href="changebus" style="color:white;">Bus change</a></li>
-                           -->
-                           <li class="footer_nav_item"><a href="/changebus" style="color:white;">Bus change</a></li>
-                            <li class="main_nav_item"><a href="ticketinfo">Booked Ticket</a></li>
-                            <li class="main_nav_item"><a href="changebus">news</a></li>
-
-                                                        </ul>
+                           <select onchange="location.href = this.value;">
+                           <option value="{% url 'admindelete' %}">Select for Delete</option>
+                           <option value="{% url 'admindelete' %}">Delete Admin</option>
+                           <option value="{% url 'commentdelete' %}">Delete Comment</option>
+                           <option value="{% url 'busdelete' %}">Delete Bus</option>
+                           <option value="{% url 'citydelete' %}">Delete City</option>
+                           <option value="{% url 'routedelete' %}">Delete Route</option>
+                           <option value="{% url 'workerdelete' %}">Delete driver</option>
+    <option value="{% url 'delete_ticket' %}">Delete Ticket</option>
+                           </select>
+                           <li class="footer_nav_item"><a href="{% url 'logout' %}" style="color:white;margin-left:50px;">Logout</a></li>
+                           </ul>
                                                 </div>
                                                 <div class="content_search ml-lg-0 ml-auto">
                                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -126,50 +132,61 @@
                         <div class="menu_close_container"><div class="menu_close"></div></div>
                         <div class="logo menu_logo"><a href="#"><img src="../static/images/logo.png" alt=""></a></div>
                         <ul>
-                         <li class="main_nav_item"><a href="home">home</a></li>
-                           <li class="main_nav_item"><a href="businsert">Register Bus</a></li>
-                           <li class="main_nav_item"><a href="route">Registor Route</a></li>
-                           <li class="main_nav_item"><a href="updatebus">Bus Update</a></li>
-                           <li class="footer_nav_item"><a href="admin" style="color:white;">Create Admin</a></li>
-                           <li class="footer_nav_item"><a href="city" style="color:white;">Registor City</a></li>
+                        <li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
                            <select onchange="location.href = this.value;">
-                           <option value="admindelete">Select for Show</option>
-                           <option value="routes">show routes</option>
-                           <option value="users">show Users</option>
-                           <option value="buses">show Buses</option>
-                           <option value="comments">All Comments</option>
+                           <option value="#">Select for Register</option>
+                           <option value="{% url 'businsert' %}">Register Bus</option>
+                           <option value="{% url 'route' %}">Register Routes</option>
+                           <option value="{% url 'admins' %}">Register Admin</option>
+                           <option value="{% url 'city' %}">Register City</option>
+                           <option value="{% url 'admins' %}">Register Admin </option>
+                           <option value="{% url 'worker' %}">Register Driver</option>
+                           </select>
+                          <select onchange="location.href = this.value;">
+                          <option value="#">Select for Update</option>
+                           <option value="{% url 'updatebus' %}">Update Side_no</option>
+                           <option value="{% url 'changebus' %}">Change Bus</option>
                            </select>
                            <select onchange="location.href = this.value;">
-                           <option value="admindelete">Select for Delete</option>
-                           <option value="admindelete">Delete Admin</option>
-                           <option value="commentdelete">Delete Comment</option>
-                           <option value="busdelete">Delete Bus</option>
-                           <option value="citydelete">Delete City</option>
-                           <option value="routedelete">Delete Route</option>
+                           <option value="{% url 'admindelete' %}">Select for Show</option>
+                           <option value="{% url 'routes' %}">show routes</option>
+                           <option value="{% url 'users' %}">show Users</option>
+                           <option value="{% url 'buses' %}">show Buses</option>
+                           <option value="{% url 'comments' %}">Show Comments</option>
+                           <option value="{% url 'driver' %}">Driver</option>
+                           <option value="{% url 'ticketinfo' %}">Booked Ticket</option>
                            </select>
-                           <li class="footer_nav_item"><a href="logout" style="color:white;margin-left:50px;">Logout</a></li>
-                           <!--
-                           <li class="footer_nav_item"><a href="changebus" style="color:white;">Bus change</a></li>
-                           -->
-                           <li class="footer_nav_item"><a href="/changebus" style="color:white;">Bus change</a></li>
-                            <li class="main_nav_item"><a href="ticketinfo">Booked tickets</a></li>
-                            <li class="main_nav_item"><a href="changebus">news</a></li>
-
+                           <select onchange="location.href = this.value;">
+                           <option value="{% url 'admindelete' %}">Select for Delete</option>
+                           <option value="{% url 'admindelete' %}">Delete Admin</option>
+                           <option value="{% url 'commentdelete' %}">Delete Comment</option>
+                           <option value="{% url 'busdelete' %}">Delete Bus</option>
+                           <option value="{% url 'citydelete' %}">Delete City</option>
+                           <option value="{% url 'routedelete' %}">Delete Route</option>
+                           <option value="{% url 'workerdelete' %}">Delete driver</option>
+    <option value="{% url 'delete_ticket' %}">Delete Ticket</option>
+                           </select>
+                           <li class="footer_nav_item"><a href="{% url 'logout' %}" style="color:white;margin-left:50px;">Logout</a></li>
                         </ul>
                 </div>
         </div>
 	</br></br></br></br></br></br></br></br></br></br>
+
 <div id="ticketContainer" style="background-color: #f1f1f1; padding: 10px;">
   <button onclick="downloadTicket()" style="background-color: #4CAF50;margin-left: 1050px; padding: 10px 20px; border: none; cursor: pointer;">Download Ticket</button>
 </div>
+
+
+<!--
 <div id="ticketContent">
   <h3>Admin Name ------------------</h3>
   <h3>Signature -------------------</h3>
   <h3>Date ------------------------</h3>
-  <h1 style="margin-left:300px;color:brown;"><b>Show Tickets Info</b></h1><br />
-{% if routes %}
-  {% set first_route = routes[0] %}
-  <p>From: {{ first_route[3] }} To: {{ first_route[4] }} Date: {{ first_route[5] }}</p>
+  <h1 style="margin-left:300px;color:brown;"><b>Show Tickets Info</b></h1><br/>
+     {% if routes %}
+  <p>From: {{ routes.0.depcity }} To: {{ routes.0.descity }} Date: {{ routes.0.date }}</p>
+{% else %}
+  <p>No booked tickets available for this route.</p>
 {% endif %}
   <table border="2">
     <thead>
@@ -192,22 +209,276 @@
       {% for route in routes %}
       <tr>
         <td style="background-color: green;"><h3><b style="color: yellow;">{{ loop.index }}</b></h3></td>
-        <td><p> <b style="color: green;">{{ route[0] }} </b></p></td>
-        <td> <p> <b style="color: green;"> {{ route[1] }} </b></p></td>
-        <td> <p> <b style="color: green;"> {{ route[2] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[3] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[4] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[5] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[6] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[7] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[8] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[9] }} </b></p></td>
-        <td> <p> <b style="color: green;">{{ route[14] }} </b></p></td>
+        <td><p> <b style="color: green;">{{ route.firstname }} </b></p></td>
+        <td> <p> <b style="color: green;"> {{ route.lastname }} </b></p></td>
+        <td> <p> <b style="color: green;"> {{ route.phone }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.depcity }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.descity }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.date }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.no_seat }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.price }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.side_no }} </b></p></td>
+        <td> <p> <b style="color: green;">{{ route.plate_no }} </b></p></td>
+        <td> <p> <b style="color: green;"></b></p></td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
+<div id="ticketContent" style="text-align: center; margin: 0 auto;">
+  <h3>Admin Name ------------------</h3>
+  <h3>Signature -------------------</h3>
+  <h3>Date ------------------------</h3>
+  <h1 style="color: brown;"><b>Show Tickets Info</b></h1><br/>
+
+  {% if routes %}
+    <p>From: {{ routes.0.depcity }} To: {{ routes.0.descity }} Date: {{ routes.0.date }}</p>
+  {% else %}
+    <p>No booked tickets available for this route.</p>
+  {% endif %}
+
+  <table style="width: 80%; margin: auto; border-collapse: collapse; border: 2px solid black;">
+    <thead style="background-color: white;">
+      <tr>
+        <th style="border: 1px solid black;"><b style="color: blue;">No.</b></th>
+        <th style="border: 1px solid black;"><b style="color: blue;">First Name</b></th>
+        <th style="border: 1px solid black;"><b style="color: blue;">Last Name</b></th>
+        <th style="border: 1px solid black;"><b style="color: blue;">Phone</b></th>
+        <th style="border: 1px solid black;"><b style="color: blue;">Departure</b></th>
+        <th style="border: 1px solid black;"><b style="color: blue;">Destination</b></th>
+        <th style="border: 1px solid black;"><b style="color: blue;">Travel Date</b></th>
+        <th style="border: 1px solid black;"><b style="color: blue;">Seat Number</b></th>
+        <th style="border: 1px solid black;"><b style="color: blue;">Price</b></th>
+        <th style="border: 1px solid black;"><b style="color: blue;">Side No</b></th>
+        <th style="border: 1px solid black;"><b style="color: blue;">Plate No</b></th>
+        <th style="border: 1px solid black;"><b style="color: blue;">Check</b></th>
+      </tr>
+    </thead>
+    <tbody style="background-color: magenta;">
+      {% for route in routes %}
+      <tr>
+        <td style="background-color: green; border: 1px solid black;"><b style="color: yellow;">{{ loop.index }}</b></td>
+        <td style="border: 1px solid black;"><b style="color: green;">{{ route.firstname }}</b></td>
+        <td style="border: 1px solid black;"><b style="color: green;">{{ route.lastname }}</b></td>
+        <td style="border: 1px solid black;"><b style="color: green;">{{ route.phone }}</b></td>
+        <td style="border: 1px solid black;"><b style="color: green;">{{ route.depcity }}</b></td>
+        <td style="border: 1px solid black;"><b style="color: green;">{{ route.descity }}</b></td>
+        <td style="border: 1px solid black;"><b style="color: green;">{{ route.date }}</b></td>
+        <td style="border: 1px solid black;"><b style="color: green;">{{ route.no_seat }}</b></td>
+        <td style="border: 1px solid black;"><b style="color: green;">{{ route.price }}</b></td>
+        <td style="border: 1px solid black;"><b style="color: green;">{{ route.side_no }}</b></td>
+        <td style="border: 1px solid black;"><b style="color: green;">{{ route.plate_no }}</b></td>
+        <td style="border: 1px solid black;"><b style="color: green;"></b></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div id="ticketContent" style="text-align: center; margin: 0 auto;">
+  <h3>Admin Name ------------------</h3>
+  <h3>Signature -------------------</h3>
+  <h3>Date ------------------------</h3>
+  <h1 style="color: brown;"><b>Show Tickets Info</b></h1><br/>
+
+  {% if routes %}
+    <p>From: {{ routes.0.depcity }} To: {{ routes.0.descity }} Date: {{ routes.0.date }}</p>
+  {% else %}
+    <p>No booked tickets available for this route.</p>
+  {% endif %}
+
+  <div style="border: 2px solid black; width: 80%; margin: auto; border-collapse: collapse;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead style="background-color: white;">
+        <tr>
+          <th style="border: 1px solid black;"><b style="color: blue;">No.</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">First Name</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Last Name</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Phone</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Departure</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Destination</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Travel Date</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Seat Number</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Price</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Side No</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Plate No</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Check</b></th>
+        </tr>
+      </thead>
+      <tbody style="background-color: magenta;">
+        {% for route in routes %}
+        <tr>
+          <td style="background-color: green; border: 1px solid black;"><b style="color: yellow;">{{ loop.index }}</b></td>
+          <td style="border: 1px solid black;"><b style="color: green;">{{ route.firstname }}</b></td>
+          <td style="border: 1px solid black;"><b style="color: green;">{{ route.lastname }}</b></td>
+          <td style="border: 1px solid black;"><b style="color: green;">{{ route.phone }}</b></td>
+          <td style="border: 1px solid black;"><b style="color: green;">{{ route.depcity }}</b></td>
+          <td style="border: 1px solid black;"><b style="color: green;">{{ route.descity }}</b></td>
+          <td style="border: 1px solid black;"><b style="color: green;">{{ route.date }}</b></td>
+          <td style="border: 1px solid black;"><b style="color: green;">{{ route.no_seat }}</b></td>
+          <td style="border: 1px solid black;"><b style="color: green;">{{ route.price }}</b></td>
+          <td style="border: 1px solid black;"><b style="color: green;">{{ route.side_no }}</b></td>
+          <td style="border: 1px solid black;"><b style="color: green;">{{ route.plate_no }}</b></td>
+          <td style="border: 1px solid black;"><b style="color: green;"></b></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div id="ticketContent" style="text-align: center; margin: 0 auto;">
+  <h3>Admin Name ------------------</h3>
+  <h3>Signature -------------------</h3>
+  <h3>Date ------------------------</h3>
+  <h1 style="color: brown;"><b>Show Tickets Info</b></h1><br/>
+
+  {% if routes %}
+    <p>From: {{ routes.0.depcity }} To: {{ routes.0.descity }} Date: {{ routes.0.date }}</p>
+  {% else %}
+    <p>No booked tickets available for this route.</p>
+  {% endif %}
+
+  <div style="border: 2px solid black; width: 80%; margin: auto;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead style="background-color: white;">
+        <tr>
+          <th style="border: 1px solid black;"><b style="color: blue;">No.</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">First Name</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Last Name</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Phone</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Departure</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Destination</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Travel Date</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Seat Number</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Price</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Side No</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Plate No</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Check</b></th>
+        </tr>
+      </thead>
+      <tbody style="background-color: magenta;">
+        {% for route in routes %}
+        <tr>
+          <td style="background-color: green; border: 1px solid black;">
+            <b style="color: yellow;">{{ loop.index }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.firstname }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.lastname }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.phone }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.depcity }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.descity }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.date }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.no_seat }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.price }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.side_no }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.plate_no }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;"></b>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+-->
+<div id="ticketContent" style="text-align: center; margin: 0 auto;">
+  <h3>Admin Name ------------------</h3>
+  <h3>Signature -------------------</h3>
+  <h3>Date ------------------------</h3>
+  <h1 style="color: brown;"><b>Show Tickets Info</b></h1><br/>
+
+  {% if routes %}
+    <p>From: {{ routes.0.depcity }} To: {{ routes.0.descity }} Date: {{ routes.0.date }}</p>
+  {% else %}
+    <p>No booked tickets available for this route.</p>
+  {% endif %}
+
+  <div style="border: 2px solid black; width: 80%; margin: auto;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead style="background-color: white;">
+        <tr>
+          <th style="border: 1px solid black;"><b style="color: blue;">No.</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">First Name</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Last Name</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Phone</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Departure</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Destination</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Travel Date</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Seat Number</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Price</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Side No</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Plate No</b></th>
+          <th style="border: 1px solid black;"><b style="color: blue;">Check</b></th>
+        </tr>
+      </thead>
+      <tbody style="background-color: magenta;">
+        {% for route in routes %}
+        <tr>
+          <td style="background-color: green; border: 1px solid black;">
+            <b style="color: yellow;">{{ loop.index }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.firstname }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.lastname }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.phone }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.depcity }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.descity }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.date }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.no_seat }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.price }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.side_no }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;">{{ route.plate_no }}</b>
+          </td>
+          <td style="border: 1px solid black;">
+            <b style="color: green;"></b>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
 
 <script>
   function downloadTicket() {
@@ -219,8 +490,6 @@
     downloadLink.click();
   }
 </script>
-
-
 </br></br></br</br></br>
   </br></br></br>
   <div class="copyright">
@@ -237,34 +506,36 @@
                                         <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
                                                 <div class="footer_nav">
                                                         <ul class="footer_nav_list">
-                                                         <li class="main_nav_item"><a href="home">home</a></li>
-                           <li class="main_nav_item"><a href="businsert">Register Bus</a></li>
-                           <li class="main_nav_item"><a href="route">Registor Route</a></li>
-                           <li class="main_nav_item"><a href="updatebus">Bus Update</a></li>
-                           <li class="footer_nav_item"><a href="admin" style="color:white;">Create Admin</a></li>
-                           <li class="footer_nav_item"><a href="city" style="color:white;">Registor City</a></li>
+                                                         <li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                           <li class="main_nav_item"><a href="{% url 'businsert' %}">Register Bus</a></li>
+                           <li class="main_nav_item"><a href="{% url 'route' %}">Registor Route</a></li>
+                           <li class="main_nav_item"><a href="{% url 'updatebus' %}">Bus Update</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'admins' %}" style="color:white;">Create Admin</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'city' %}" style="color:white;">Registor City</a></li>
                            <select onchange="location.href = this.value;">
-                           <option value="admindelete">Select for Show</option>
-                           <option value="routes">show routes</option>
-                           <option value="users">show Users</option>
-                           <option value="buses">show Buses</option>
-                           <option value="comments">All Comments</option>
+                           <option value="{% url 'admindelete' %}">Select for Show</option>
+                           <option value="{% url 'routes' %}">show routes</option>
+                           <option value="{% url 'users' %}">show Users</option>
+                           <option value="{% url 'buses' %}">show Buses</option>
+    <option value="{% url 'driver' %}">Drivers</option>
+    <option value="{% url 'driver' %}">Drivers</option>
+                           <option value="{% url 'comments' %}">All Comments</option>
                            </select>
                            <select onchange="location.href = this.value;">
-                           <option value="admindelete">Select for Delete</option>
-                           <option value="admindelete">Delete Admin</option>
-                           <option value="commentdelete">Delete Comment</option>
-                           <option value="busdelete">Delete Bus</option>
-                           <option value="citydelete">Delete City</option>
-                           <option value="routedelete">Delete Route</option>
+                           <option value="{% url 'admindelete' %}">Select for Delete</option>
+                           <option value="{% url 'admindelete' %}">Delete Admin</option>
+                           <option value="{% url 'commentdelete' %}">Delete Comment</option>
+                           <option value="{% url 'busdelete' %}">Delete Bus</option>
+                           <option value="{% url 'citydelete' %}">Delete City</option>
+                           <option value="{% url 'routedelete' %}">Delete Route</option>
                            </select>
-                           <li class="footer_nav_item"><a href="logout" style="color:white;margin-left:50px;">Logout</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'logout' %}" style="color:white;margin-left:50px;">Logout</a></li>
                            <!--
-                           <li class="footer_nav_item"><a href="changebus" style="color:white;">Bus change</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'changebus' %}" style="color:white;">Bus change</a></li>
                            -->
-                           <li class="footer_nav_item"><a href="/changebus" style="color:white;">Bus change</a></li>
-                            <li class="main_nav_item"><a href="ticketinfo">Booked Tickets</a></li>
-                            <li class="main_nav_item"><a href="changebus">news</a></li>
+                           <li class="footer_nav_item"><a href="{% url 'changebus' %}" style="color:white;">Bus change</a></li>
+                            <li class="main_nav_item"><a href="{% url 'ticketinfo' %}">Booked Tickets</a></li>
+                            <li class="main_nav_item"><a href="{% url 'changebus' %}">news</a></li>
 
                                                         </ul>
                                                 </div>

@@ -14,13 +14,8 @@
 <link rel="stylesheet" type="text/css" href="../static/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="../static/styles/responsive.css">
 </head>
-
-
-
 <body style="background-color: lightblue;">
-
 <div class="super_container">
-                <!-- Header -->
 <header class="header">
                 <!-- Top Bar -->
                 <div class="top_bar">
@@ -42,7 +37,6 @@
                                 </div>
                         </div>
                 </div>
-
 		<nav class="main_nav">
                         <div class="container">
                                 <div class="row">
@@ -52,13 +46,22 @@
                                                 </div>
                                                 <div class="main_nav_container ml-auto">
                                                 <ul class="main_nav_list">
-							<li class="main_nav_item"><a href="home">home</a></li>
-                                                 	<li class="main_nav_item"><a href="about">about us</a></li>
-                                                 	<li class="main_nav_item"><a href="offers">cheeck route</a></li>
-                                                        <li class="main_nav_item"><a href="comment">comment</a></li>
-                                                        <li class="main_nav_item"><a href="changebuses">newss</a></li>
+						<li class="footer_nav_item"><a href="{% url 'home' %}">home</a></li>
+                                                <li class="footer_nav_item"><a href="{% url 'about' %}">about us</a></li>
+                                                <li class="footer_nav_item"><a href="{% url 'offers' %}">cheeck route</a></li>
+                                                <li class="footer_nav_item"><a href="{% url 'comment' %}">comment</a></li>
+								<!--<li class="main_nav_item"><a href="{% url 'changebuses' %}">newss</a></li>-->                                                
+						<li class="footer_nav_item" style="display: inline;">
+						<form action="{% url 'changebuses' %}" method="post" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">									{% csrf_token %}
+   <button type="submit">
+	   🔔 <span style="color: red;"><b>{{count}}</b></span>
+</button>
 
-                                                 </ul>
+    						</br>
+    						<input type="date" name="date" placeholder="Date" required>
+						</form>
+						<li>
+						</ul>
                                                 </div>
                                                 <div class="content_search ml-lg-0 ml-auto">
                                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -99,14 +102,33 @@
                         <div class="menu_close_container"><div class="menu_close"></div></div>
                         <div class="logo menu_logo"><a href="#"><img src="../static/images/logo.png" alt=""></a></div>
                         <ul>
-                        <li class="main_nav_item"><a href="home">home</a></li>
-                        <li class="main_nav_item"><a href="about">about us</a></li>
-                        <li class="main_nav_item"><a href="offers">cheeck route</a></li>
-                        <li class="main_nav_item"><a href="comment">comment</a></li>
-                        <li class="main_nav_item"><a href="changebuses">newss</a></li>
+                         <li class="footer_nav_item"><a href="{% url 'home' %}">home</a></li>
+                         <li class="footer_nav_item"><a href="{% url 'about' %}">about us</a></li>
+                         <li class="footer_nav_item"><a href="{% url 'offers' %}">cheeck route</a></li>
+                         <li class="footer_nav_item"><a href="{% url 'comment' %}">comment</a></li>
+			 <li class="main_nav_item" style="display: inline;">
+
+
+			<!--
+			<form action="{% url 'changebuses' %}" method="post" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+    {% csrf_token %}
+   <button type="submit">🔔{{ count}}</button>
+    </br>
+    <input type="date" name="date" placeholder="Date" required>
+</form>
+			-->
+<form action="{% url 'changebuses' %}" method="post" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+    {% csrf_token %}
+    <button type="submit">🔔{{ count }}</button>
+    <br>
+    <input type="date" name="date" placeholder="Date" required id="date_input">
+</form>
+
+<li>
                         </ul>
                 </div>
         </div>
+
 	</br></br></br></br></br></br></br></br></br></br></br>
 	 {% if success %}
     <div class="success">
@@ -137,13 +159,11 @@
     <th><h3><b style="color: white; background-color: green; margin-left: 30px;">new Plate</b></h3></th>
 </tr>
 </thead>
-
     <tbody style="background-color: lightgray; margin-left: 300px;">
         {% for bus in buschange%}
         <tr>
             <td><h3><b style="color: brown;">{{ loop.index }}</b></h3></td>
             <td>
-		    <!--  <form action="/updatebus" method="POST">-->
     <input type="text" name="plate_no" value="{{ bus.depcity}}" readonly style="height: 50px; margin-left: 7px; text-align: center; color: blue; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;">
     </td>
     <td>
@@ -172,7 +192,9 @@
     </tbody>
 </table>
 
-</br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+</br></br></br></br></br></br></br></br></br>
+
+
   <div class="copyright">
                 <div class="container">
                         <div class="row">
@@ -187,11 +209,11 @@
                                         <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
                                                 <div class="footer_nav">
                                                         <ul class="footer_nav_list">
-                                             		  <li class="main_nav_item"><a href="home">home</a></li>
-                                                                <li class="main_nav_item"><a href="about">about us</a></li>
-                                                                <li class="main_nav_item"><a href="offers">cheeck route</a></li>
-                                                                <li class="main_nav_item"><a href="comment">comment</a></li>
-                                                                <li class="main_nav_item"><a href="changebuses">newss</a></li>
+                                             		  <li class="footer_nav_item"><a href="{% url 'home' %}">home</a></li>
+                                                                <li class="footer_nav_item"><a href="{% url 'about' %}">about us</a></li>
+                                                                <li class="footer_nav_item"><a href="{% url 'offers' %}">cheeck route</a></li>
+                                                                <li class="footer_nav_item"><a href="{% url 'comment' %}">comment</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'changebuses' %}">newss</a></li>
                                                         </ul>
                                                 </div>
                                         </div>

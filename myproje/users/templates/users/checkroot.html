@@ -38,8 +38,8 @@
                                                         </ul>
                                                 </div>
 						<div class="user_box ml-auto">
-                                                        <div class="user_box_login user_box_link"><a href="login">login</a></div>
-                                                        <div class="user_box_register user_box_link"><a href="registor">register</a></div>
+                                                        <div class="user_box_login user_box_link"><a href="{% url 'login' %}">login</a></div>
+                                                        <div class="user_box_register user_box_link"><a href="{% url 'registor' %}">register</a></div>
                                                 </div>
 
                                         </div>
@@ -56,10 +56,10 @@
                                                 </div>
                                                 <div class="main_nav_container ml-auto">
                                                         <ul class="main_nav_list">
-                                                                <li class="main_nav_item"><a href="home">home</a></li>
-                                                                <li class="main_nav_item"><a href="about">About us</a></li>
-                                                                <li class="main_nav_item"><a href="offers">cheeck route</a></li>
-                                                                <li class="main_nav_item"><a href="comment">comment</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'about' %}">About us</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'offers' %}">cheeck route</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'comment' %}">comment</a></li>
                                                         </ul>
                                                 </div>
                                                 <div class="content_search ml-lg-0 ml-auto">
@@ -101,10 +101,10 @@
                         <div class="menu_close_container"><div class="menu_close"></div></div>
                         <div class="logo menu_logo"><a href="#"><img src="../static/images/logo.png" alt=""></a></div>
                         <ul>
-                                <li class="menu_item"><a href="home">home</a></li>
-                                <li class="menu_item"><a href="about">about us</a></li>
-                                <li class="menu_item"><a href="offers">cheeck route</a></li>
-                                <li class="menu_item"><a href="comment">comment</a></li>
+                                <li class="menu_item"><a href="{% url 'home' %}">home</a></li>
+                                <li class="menu_item"><a href="{% url 'about' %}">about us</a></li>
+                                <li class="menu_item"><a href="{% url 'offers' %}">cheeck route</a></li>
+                                <li class="menu_item"><a href="{% url 'comment' %}">comment</a></li>
                         </ul>
                 </div>
         </div>
@@ -113,37 +113,35 @@
 
 	<table border="2">
     <thead>
-    <tr style="background-color: white;">
-    <th><h3><b style="color: blue;">No.</b></h3></th>
-    <th><h3><b style="color: blue;">reg date</b></h3></th>
-    <th><h3><b style="color: blue;">Id</b></h3></th>
-    <th><h3><b style="color: blue;">Travel Date</b></h3></th>
-    <th><h3><b style="color: blue;">Departure</b></h3></th>
-    <th><h3><b style="color: blue;">Destination</b></h3></th>
-    <th><h3><b style="color: blue;">Price</b></h3></th>
-    <th><h3><b style="color: blue;">Kilometer</b></h3></th>
-    <th><h3><b style="color: blue;">side no</b></h3></th>
-    <th><h3><b style="color: blue;">plate_no</b></h3></th>
-</tr>
+        <tr style="background-color: white;">
+            <th><h3><b style="color: blue;">No.</b></h3></th>
+            <th><h3><b style="color: blue;">Reg Date</b></h3></th>
+            <th><h3><b style="color: blue;">ID</b></h3></th>
+            <th><h3><b style="color: blue;">Travel Date</b></h3></th>
+            <th><h3><b style="color: blue;">Departure</b></h3></th>
+            <th><h3><b style="color: blue;">Destination</b></h3></th>
+            <th><h3><b style="color: blue;">Price</b></h3></th>
+            <th><h3><b style="color: blue;">Kilometer</b></h3></th>
+            <th><h3><b style="color: blue;">Side No</b></h3></th>
+            <th><h3><b style="color: blue;">Plate No</b></h3></th>
+        </tr>
     </thead>
-    
-
     <tbody style="background-color: magenta;">
-    {% for route in routes %}
-    <tr>
-        <td style="background-color: green;"><h3><b style="color: yellow;">{{ loop.index }}</b></h3></td>
-	<td><h4> <b style="color: green;">{{ route.created_at }}</b></h4></td>
-        <td><h4><b style="color: green;">{{ route.id}}</b></h4></td>
-        <td><h4> <b style="color: green;">{{ route.date }} </b></h4></td>
-        <td> <h4> <b style="color: green;"> {{ route.depcity }} </b></h4></td>
-        <td> <h4> <b style="color: green;"> {{ route.descity }} </b></h4></td>
-        <td> <h4> <b style="color: green;">{{ route.price }} </b></h4></td>
-        <td> <h4> <b style="color: green;">{{ route.kilometer }} </b></h4></td>
-        <td> <h4> <b style="color: green;">{{ route.side_no }} </b></h4></td>
-        <td> <h4> <b style="color: green;">{{ route.plate_no }} </b></h4></td>
-    </tr>
-    {% endfor %}
-</tbody>
+            {% for route in routes %}
+            <tr>
+                <td style="background-color: green;"><h3><b style="color: yellow;">{{ forloop.counter }}</b></h3></td>
+                <td><h4><b style="color: green;">{{ route.created_at }}</b></h4></td>
+                <td><h4><b style="color: green;">{{ route.id }}</b></h4></td>
+                <td><h4><b style="color: green;">{{ route.date }}</b></h4></td>
+                <td><h4><b style="color: green;">{{ route.depcity }}</b></h4></td>
+                <td><h4><b style="color: green;">{{ route.descity }}</b></h4></td>
+                <td><h4><b style="color: green;">{{ route.price }}</b></h4></td>
+                <td><h4><b style="color: green;">{{ route.kilometer }}</b></h4></td>
+                <td><h4><b style="color: green;">{{ route.side_no }}</b></h4></td>
+                <td><h4><b style="color: green;">{{ route.plate_no }}</b></h4></td>
+            </tr>
+            {% endfor %}
+    </tbody>
 </table>
 </br></br></br</br></br>
   </br></br></br>
@@ -161,10 +159,10 @@
                                         <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
                                                 <div class="footer_nav">
                                                         <ul class="footer_nav_list">
-                                                                <li class="footer_nav_item"><a href="home">home</a></li>
-                                                                <li class="footer_nav_item"><a href="about">about us</a></li>
-                                                                <li class="footer_nav_item"><a href="comment">comment</a></li>
-                                                                <li class="footer_nav_item"><a href="offers">cheeck route</a></li>
+                                                                <li class="footer_nav_item"><a href="{% url 'home' %}">home</a></li>
+                                                                <li class="footer_nav_item"><a href="{% url 'about' %}">about us</a></li>
+                                                                <li class="footer_nav_item"><a href="{% url 'comment' %}">comment</a></li>
+                                                                <li class="footer_nav_item"><a href="{% url 'offers' %}">cheeck route</a></li>
 
                                                         </ul>
                                                 </div>

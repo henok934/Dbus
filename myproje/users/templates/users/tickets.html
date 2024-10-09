@@ -49,10 +49,10 @@
                                                 </div>
                                                 <div class="main_nav_container ml-auto">
                                                         <ul class="main_nav_list">
-                                                                 <li class="main_nav_item"><a href="home">home</a></li>
-                                                                <li class="main_nav_item"><a href="get_ticket">show ticket</a></li>
-                                                                <li class="main_nav_item"><a href="book">book</a></li>
-                                                                <li class="main_nav_item"><a href="logout">logout</a></li>
+                                                                 <li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'get_ticket' %}">show ticket</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'book' %}">book</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'logout' %}">logout</a></li>
 
                                                         </ul>
                                                 </div>
@@ -100,131 +100,552 @@
                         <div class="menu_close_container"><div class="menu_close"></div></div>
                         <div class="logo menu_logo"><a href="#"><img src="../static/images/logo.png" alt=""></a></div>
                         <ul>
-                              <li class="main_nav_item"><a href="home">home</a></li>
-                              <li class="main_nav_item"><a href="get_ticket">show ticket</a></li>
-                              <li class="main_nav_item"><a href="book">book</a></li>
-                              <li class="main_nav_item"><a href="logout">logout</a></li>
+                              <li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                              <li class="main_nav_item"><a href="{% url 'get_ticket' %}">show ticket</a></li>
+                              <li class="main_nav_item"><a href="{% url 'book' %}">book</a></li>
+                              <li class="main_nav_item"><a href="{% url 'logout' %}">logout</a></li>
                         </ul>
                 </div>
         </div>
         </br></br></br></br></br></br></br></br></br></br></br></br> 
-<div style="background-color: #f1f1f1; padding: 10px;">
-  <button onclick="downloadTicket()" style="background-color: #4CAF50;margin-left:1050px; padding: 10px 20px; border: none; cursor: pointer;">Download Ticket</button>
+
+<div id="ticketContainer" style="background-color: #f1f1f1; padding: 10px;">
+  <button onclick="downloadTicket()" style="background-color: #4CAF50; margin-left: 1050px; padding: 10px 20px; border: none; cursor: pointer;">Download Ticket</button>
 </div>
-<div class="center">
-  <h1 style="color: purple; margin-left: 250px; height: 50px;"><b>Thanks for Traveling with us!!</b></h1>
-  {% for tick in ticket %}
-    <h3 style="color: green; margin-left: 300px;"><b>Booked Time:</b> <b style="margin-left: 10px; color: blue;">{{ tick[11] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>First Name:</b><b style="margin-left: 40px; color: blue;">{{ tick[0] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>Last Name:</b><b style="margin-left: 40px; color: blue;">{{ tick[1] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>Ticket ID:</b> <b style="margin-left: 60px; color: blue;">{{ tick[10] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>Phone NO:</b><b style="margin-left: 50px; color: blue;">{{ tick[2] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>From:</b> <b style="margin-left: 100px; color: blue;">{{ tick[3] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>To:</b> <b style="margin-left: 135px; color: blue;">{{ tick[4] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px;"><b>Side NO:</b> <b style="margin-left: 70px; color: blue;">{{ tick[8] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px;"><b>Travel Date:</b> <b style="margin-left: 27px; color: blue;">{{ tick[5] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px;"><b>Seat No:</b> <b style="margin-left: 70px; color: blue;">{{ tick[6] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px;"><b>Price:</b> <b style="margin-left: 105px; color: blue;">{{ tick[7] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px;"><b>Plate NO:</b><b style="margin-left: 65px; color: blue;">{{ tick[9] }}</b></h3>
-  {% endfor %}
+<div class="center" id="ticketContent" style="padding: 20px; text-align: left; max-width: 800px; margin: 0 auto;">
+  <div style="border: 1px solid #4CAF50; border-radius: 8px; padding: 10px; background-color: white;">
+    <h1 style="color: purple; text-align: center;"><b>Thanks for Traveling with us!!</b></h1>
+    {% for tick in ticket %}
+      <h3 style="color: green; margin: 0; padding: 3px 0; text-align: left;">
+        <b>Booked Time:</b> <b style="color: blue;">{{ tick.booked_time }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 3px 0; text-align: left;">
+        <b>First Name:</b> <b style="color: blue;">{{ tick.firstname }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 3px 0; text-align: left;">
+        <b>Last Name:</b> <b style="color: blue;">{{ tick.lastname }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 3px 0; text-align: left;">
+        <b>Ticket ID:</b> <b style="color: blue;">{{ tick.ticket_id }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 3px 0; text-align: left;">
+        <b>Phone No:</b> <b style="color: blue;">{{ tick.phone }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 3px 0; text-align: left;">
+        <b>From:</b> <b style="color: blue;">{{ tick.depcity }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 3px 0; text-align: left;">
+        <b>To:</b> <b style="color: blue;">{{ tick.descity }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 3px 0; text-align: left;">
+        <b>Side No:</b> <b style="color: blue;">{{ tick.side_no }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 3px 0; text-align: left;">
+        <b>Travel Date:</b> <b style="color: blue;">{{ tick.date }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 3px 0; text-align: left;">
+        <b>Seat No:</b> <b style="color: blue;">{{ tick.no_seat }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 3px 0; text-align: left;">
+        <b>Price:</b> <b style="color: blue;">{{ tick.price }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 3px 0; text-align: left;">
+        <b>Plate No:</b> <b style="color: blue;">{{ tick.plate_no }}</b>
+      </h3>
+    {% endfor %}
+  </div>
 </div>
 <script>
-function openPrintWindow() {
-  var printWindow = window.open("", "_blank");
-  var ticketData = `
-    <html>
-      <head>
-        <style>
-          /* Add your print-friendly styles here */
-          body {
-            font-family: Arial, sans-serif;
-          }
-  
-          h1 {
-            color: purple;
-            margin-left: 250px;
-            height: 50px;
-          }
-  
-          h3 {
-            color: green;
-            margin-left: 300px;
-          }
-  
-          b {
-            margin-left: 10px;
-            color: blue;
-          }
-        </style>
-      </head>
-      <body>
-        <h1>Thanks for Traveling with us!!</h1>
-        {% for tick in ticket %}
-          <h3><b>Booked Time:</b> <b>{{ tick[1] }}</b></h3>
-          <h3><b>First Name:</b> <b>{{ tick[3] }}</b></h3>
-          <hApologies for the incomplete response. Here's the rest of the updated code:
+  function downloadTicket() {
+    // Get the content to be downloaded
+    const ticketContent = document.getElementById("ticketContent").outerHTML;
 
-```html
-          <h3><b>Last Name:</b> <b>{{ tick[4] }}</b></h3>
-          <h3><b>Ticket ID:</b> <b>{{ tick[0] }}</b></h3>
-          <h3><b>Phone NO:</b> <b>{{ tick[5] }}</b></h3>
-          <h3><b>From:</b> <b>{{ tick[6] }}</b></h3>
-          <h3><b>To:</b> <b>{{ tick[7] }}</b></h3>
-          <h3><b>Side NO:</b> <b>{{ tick[11] }}</b></h3>
-          <h3><b>Travel Date:</b> <b>{{ tick[8] }}</b></h3>
-          <h3><b>Seat No:</b> <b>{{ tick[9] }}</b></h3>
-          <h3><b>Price:</b> <b>{{ tick[10] }}</b></h3>
-          <h3><b>Plate NO:</b> <b>{{ tick[12] }}</b></h3>
-        {% endfor %}
-      </body>
-    </html>
-  `;
-  printWindow.document.open();
-  printWindow.document.write(ticketData);
-  printWindow.document.close();
-  printWindow.print();
-}
+    // Define styles for download
+    const styles = `
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+        }
+        #ticketContent {
+          border: 1px solid #4CAF50;
+          border-radius: 8px;
+          padding: 10px;
+          background-color: white;
+        }
+        h1 {
+          color: purple;
+          text-align: center;
+        }
+        h3 {
+          color: green;
+          margin: 0;
+          padding: 3px 0;
+          text-align: left;
+        }
+        b {
+          color: blue;
+        }
+      </style>
+    `;
+
+    // Create a full HTML document as a string
+    const fullContent = `
+      <html>
+        <head>
+          <title>Ticket</title>
+          ${styles}
+        </head>
+        <body>
+          ${ticketContent}
+        </body>
+      </html>
+    `;
+
+    // Create a Blob from the full HTML content
+    const ticketBlob = new Blob([fullContent], { type: "text/html" });
+    const downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(ticketBlob);
+    downloadLink.download = "ticket.html"; // Name of the downloaded file
+    downloadLink.click();
+
+    // Cleanup
+    URL.revokeObjectURL(downloadLink.href);
+  }
 </script>
+
+
 
 
 
 
 
 <!--
-<div class="center">
-  <h1 style="color: purple; margin-left: 250px; height: 50px;"><b>Thanks for Traveling with us!!</b></h1>
+<div id="ticketContainer" style="background-color: #f1f1f1; padding: 10px;">
+  <button onclick="downloadTicket()" style="background-color: #4CAF50; margin-left: 1050px; padding: 10px 20px; border: none; cursor: pointer;">Download Ticket</button>
+</div>
+
+<div class="center" id="ticketContent" style="padding: 20px; text-align: left; max-width: 800px; margin: 0 auto;">
+  <div style="border: 2px solid #4CAF50; border-radius: 10px; padding: 20px; background-color: white;">
+    <h1 style="color: purple; text-align: center;"><b>Thanks for Traveling with us!!</b></h1>
+    {% for tick in ticket %}
+      <h3 style="color: green; margin: 0; padding: 5px 0; text-align: left;">
+        <b>Booked Time:</b> <b style="color: blue;">{{ tick.booked_time }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0; text-align: left;">
+        <b>First Name:</b> <b style="color: blue;">{{ tick.firstname }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0; text-align: left;">
+        <b>Last Name:</b> <b style="color: blue;">{{ tick.lastname }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0; text-align: left;">
+        <b>Ticket ID:</b> <b style="color: blue;">{{ tick.ticket_id }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0; text-align: left;">
+        <b>Phone No:</b> <b style="color: blue;">{{ tick.phone }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0; text-align: left;">
+        <b>From:</b> <b style="color: blue;">{{ tick.depcity }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0; text-align: left;">
+        <b>To:</b> <b style="color: blue;">{{ tick.descity }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0; text-align: left;">
+        <b>Side No:</b> <b style="color: blue;">{{ tick.side_no }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0; text-align: left;">
+        <b>Travel Date:</b> <b style="color: blue;">{{ tick.date }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0; text-align: left;">
+        <b>Seat No:</b> <b style="color: blue;">{{ tick.no_seat }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0; text-align: left;">
+        <b>Price:</b> <b style="color: blue;">{{ tick.price }}</b>
+      </h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0; text-align: left;">
+        <b>Plate No:</b> <b style="color: blue;">{{ tick.plate_no }}</b>
+      </h3>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  function downloadTicket() {
+    // Get the content to be downloaded
+    const ticketContent = document.getElementById("ticketContent").outerHTML;
+
+    // Define styles for download
+    const styles = `
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+        }
+        #ticketContent {
+          border: 2px solid #4CAF50;
+          border-radius: 10px;
+          padding: 20px;
+          background-color: white;
+        }
+        h1 {
+          color: purple;
+          text-align: center;
+        }
+        h3 {
+          color: green;
+          margin: 0;
+          padding: 5px 0;
+          text-align: left;
+        }
+        b {
+          color: blue;
+        }
+      </style>
+    `;
+
+    // Create a full HTML document as a string
+    const fullContent = `
+      <html>
+        <head>
+          <title>Ticket</title>
+          ${styles}
+        </head>
+        <body>
+          ${ticketContent}
+        </body>
+      </html>
+    `;
+
+    // Create a Blob from the full HTML content
+    const ticketBlob = new Blob([fullContent], { type: "text/html" });
+    const downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(ticketBlob);
+    downloadLink.download = "ticket.html"; // Name of the downloaded file
+    downloadLink.click();
+
+    // Cleanup
+    URL.revokeObjectURL(downloadLink.href);
+  }
+</script>
+-->
+
+
+
+
+
+<!--
+<div id="ticketContainer" style="background-color: #f1f1f1; padding: 10px;">
+  <button onclick="downloadTicket()" style="background-color: #4CAF50; margin-left: 1050px; padding: 10px 20px; border: none; cursor: pointer;">Download Ticket</button>
+</div>
+
+<div class="center" id="ticketContent" style="padding: 20px; text-align: left;">
+  <div style="border: 2px solid #4CAF50; border-radius: 10px; padding: 20px; margin: 20px auto; width: 80%; background-color: white; text-align: center;">
+    <h1 style="color: purple;"><b>Thanks for Traveling with us!!</b></h1>
+    {% for tick in ticket %}
+      <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Booked Time:</b> <b style="color: blue;">{{ tick.booked_time }}</b></h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0;"><b>First Name:</b> <b style="color: blue;">{{ tick.firstname }}</b></h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Last Name:</b> <b style="color: blue;">{{ tick.lastname }}</b></h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Ticket ID:</b> <b style="color: blue;">{{ tick.ticket_id }}</b></h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Phone No:</b> <b style="color: blue;">{{ tick.phone }}</b></h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0;"><b>From:</b> <b style="color: blue;">{{ tick.depcity }}</b></h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0;"><b>To:</b> <b style="color: blue;">{{ tick.descity }}</b></h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Side No:</b> <b style="color: blue;">{{ tick.side_no }}</b></h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Travel Date:</b> <b style="color: blue;">{{ tick.date }}</b></h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Seat No:</b> <b style="color: blue;">{{ tick.no_seat }}</b></h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Price:</b> <b style="color: blue;">{{ tick.price }}</b></h3>
+      <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Plate No:</b> <b style="color: blue;">{{ tick.plate_no }}</b></h3>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  function downloadTicket() {
+    // Get the content to be downloaded
+    const ticketContent = document.getElementById("ticketContent").outerHTML;
+
+    // Define styles for download
+    const styles = `
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+        }
+        #ticketContent {
+          border: 2px solid #4CAF50;
+          border-radius: 10px;
+          padding: 20px;
+          background-color: white;
+        }
+        h1 {
+          color: purple;
+          text-align: center;
+        }
+        h3 {
+          color: green;
+          margin: 0;
+          padding: 5px 0;
+        }
+        b {
+          color: blue;
+        }
+      </style>
+    `;
+
+    // Create a full HTML document as a string
+    const fullContent = `
+      <html>
+        <head>
+          <title>Ticket</title>
+          ${styles}
+        </head>
+        <body>
+          ${ticketContent}
+        </body>
+      </html>
+    `;
+
+    // Create a Blob from the full HTML content
+    const ticketBlob = new Blob([fullContent], { type: "text/html" });
+    const downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(ticketBlob);
+    downloadLink.download = "ticket.html"; // Name of the downloaded file
+    downloadLink.click();
+
+    // Cleanup
+    URL.revokeObjectURL(downloadLink.href);
+  }
+</script>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div id="ticketContainer" style="background-color: #f1f1f1; padding: 10px;">
+  <button onclick="downloadTicket()" style="background-color: #4CAF50; margin-left: 1050px; padding: 10px 20px; border: none; cursor: pointer;">Download Ticket</button>
+</div>
+
+<div class="center" id="ticketContent" style="padding: 20px; text-align: left; border: 2px solid #4CAF50; border-radius: 10px; background-color: white;">
+  <h1 style="color: purple; text-align: center;"><b>Thanks for Traveling with us!!</b></h1>
   {% for tick in ticket %}
-    <h3 style="color: green; margin-left: 300px;"><b>Booked Time:</b> <b style="margin-left: 10px; color: blue;">{{ tick[1] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>First Name:</b><b style="margin-left: 15px; color: blue;">{{ tick[3] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>Last Name:</b><b style="margin-left: 40px; color: blue;">{{ tick[4] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>Ticket ID:</b> <b style="margin-left: 60px; color: blue;">{{ tick[0] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>Phone NO:</b><b style="margin-left: 50px; color: blue;">{{ tick[5] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>From:</b> <b style="margin-left: 110px; color: blue;">{{ tick[6] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>To:</b> <b style="margin-left: 155px; color: blue;">{{ tick[7] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px;"><b>Side NO:</b> <b style="margin-left: 80px; color: blue;">{{ tick[11] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px;"><b>Travel Date:</b> <b style="margin-left: 40px; color: blue;">{{ tick[8] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px;"><b>Seat No:</b> <b style="margin-left: 85px; color: blue;">{{ tick[9] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px;"><b>Price:</b> <b style="margin-left: 120px; color: blue;">{{ tick[10] }}</b></h3>
-    <h3 style="color: green; margin-left: 300px;"><b>Plate NO:</b><b style="margin-left: 85px; color: blue;">{{ tick[12] }}</b></h3>
+    <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Booked Time:</b> <b style="color: blue;">{{ tick.booked_time }}</b></h3>
+    <h3 style="color: green; margin: 0; padding: 5px 0;"><b>First Name:</b> <b style="color: blue;">{{ tick.firstname }}</b></h3>
+    <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Last Name:</b> <b style="color: blue;">{{ tick.lastname }}</b></h3>
+    <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Ticket ID:</b> <b style="color: blue;">{{ tick.ticket_id }}</b></h3>
+    <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Phone No:</b> <b style="color: blue;">{{ tick.phone }}</b></h3>
+    <h3 style="color: green; margin: 0; padding: 5px 0;"><b>From:</b> <b style="color: blue;">{{ tick.depcity }}</b></h3>
+    <h3 style="color: green; margin: 0; padding: 5px 0;"><b>To:</b> <b style="color: blue;">{{ tick.descity }}</b></h3>
+    <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Side No:</b> <b style="color: blue;">{{ tick.side_no }}</b></h3>
+    <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Travel Date:</b> <b style="color: blue;">{{ tick.date }}</b></h3>
+    <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Seat No:</b> <b style="color: blue;">{{ tick.no_seat }}</b></h3>
+    <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Price:</b> <b style="color: blue;">{{ tick.price }}</b></h3>
+    <h3 style="color: green; margin: 0; padding: 5px 0;"><b>Plate No:</b> <b style="color: blue;">{{ tick.plate_no }}</b></h3>
   {% endfor %}
 </div>
 
-<!-- Download Button -->
-<!--<button onclick="downloadTicket()">Download Ticket</button> -->
-
-<!-- JavaScript -->
 <script>
-function downloadTicket() {
-  var ticketData = "Thanks for Traveling with us!!\n{% for tick in ticket %}Booked Time: {{ tick[1] }}\nFirst Name: {{ tick[3] }}\nLast Name: {{ tick[4] }}\nTicket ID: {{ tick[0] }}\nPhone NO: {{ tick[5] }}\nFrom: {{ tick[6] }}\nTo: {{ tick[7] }}\nSide NO: {{ tick[11] }}\nTravel Date: {{ tick[8] }}\nSeat No: {{ tick[9] }}\nPrice: {{ tick[10] }}\nPlate NO: {{ tick[12] }}\n{% endfor %}";
-  var blob = new Blob([ticketData], { type: "text/plain;charset=utf-8" });
-  var link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "ticket.txt";
-  link.click();
-}
-</script>
+  function downloadTicket() {
+    // Get the content to be downloaded
+    const ticketContent = document.getElementById("ticketContent").outerHTML;
 
+    // Define styles for download
+    const styles = `
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+        }
+        #ticketContent {
+          border: 2px solid #4CAF50;
+          border-radius: 10px;
+          padding: 20px;
+          background-color: white;
+        }
+        h1 {
+          color: purple;
+          text-align: center;
+        }
+        h3 {
+          color: green;
+          margin: 0;
+          padding: 5px 0;
+        }
+        b {
+          color: blue;
+        }
+      </style>
+    `;
+
+    // Create a full HTML document as a string
+    const fullContent = `
+      <html>
+        <head>
+          <title>Ticket</title>
+          ${styles}
+        </head>
+        <body>
+          ${ticketContent}
+        </body>
+      </html>
+    `;
+
+    // Create a Blob from the full HTML content
+    const ticketBlob = new Blob([fullContent], { type: "text/html" });
+    const downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(ticketBlob);
+    downloadLink.download = "ticket.html"; // Name of the downloaded file
+    downloadLink.click();
+
+    // Cleanup
+    URL.revokeObjectURL(downloadLink.href);
+  }
+</script>
 -->
+
+
+
+
+
+
+
+
+
+<!--
+<div id="ticketContainer" style="background-color: #f1f1f1; padding: 10px;">
+  <button onclick="downloadTicket()" style="background-color: #4CAF50; margin-left: 1050px; padding: 10px 20px; border: none; cursor: pointer;">Download Ticket</button>
+</div>
+
+<div class="center" id="ticketContent">
+  <h1 style="color: purple; text-align: center; height: 50px;"><b>Thanks for Traveling with us!!</b></h1>
+  {% for tick in ticket %}
+    <h3 style="color: green; text-align: center;"><b>Booked Time:</b> <b style="margin-left: 10px; color: blue;">{{ tick.booked_time }}</b></h3>
+    <h3 style="color: green; text-align: center;"><b>First Name:</b> <b style="margin-left: 40px; color: blue;">{{ tick.firstname }}</b></h3>
+    <h3 style="color: green; text-align: center;"><b>Last Name:</b> <b style="margin-left: 40px; color: blue;">{{ tick.lastname }}</b></h3>
+    <h3 style="color: green; text-align: center;"><b>Ticket ID:</b> <b style="margin-left: 60px; color: blue;">{{ tick.ticket_id }}</b></h3>
+    <h3 style="color: green; text-align: center;"><b>Phone No:</b> <b style="margin-left: 50px; color: blue;">{{ tick.phone }}</b></h3>
+    <h3 style="color: green; text-align: center;"><b>From:</b> <b style="margin-left: 100px; color: blue;">{{ tick.depcity }}</b></h3>
+    <h3 style="color: green; text-align: center;"><b>To:</b> <b style="margin-left: 135px; color: blue;">{{ tick.descity }}</b></h3>
+    <h3 style="color: green; text-align: center;"><b>Side No:</b> <b style="margin-left: 70px; color: blue;">{{ tick.side_no }}</b></h3>
+    <h3 style="color: green; text-align: center;"><b>Travel Date:</b> <b style="margin-left: 27px; color: blue;">{{ tick.date }}</b></h3>
+    <h3 style="color: green; text-align: center;"><b>Seat No:</b> <b style="margin-left: 70px; color: blue;">{{ tick.no_seat }}</b></h3>
+    <h3 style="color: green; text-align: center;"><b>Price:</b> <b style="margin-left: 105px; color: blue;">{{ tick.price }}</b></h3>
+    <h3 style="color: green; text-align: center;"><b>Plate No:</b> <b style="margin-left: 65px; color: blue;">{{ tick.plate_no }}</b></h3>
+  {% endfor %}
+</div>
+
+<script>
+  function downloadTicket() {
+    // Get the content to be downloaded
+    const ticketContent = document.getElementById("ticketContent").outerHTML;
+
+    // Define styles you want to include in the download
+    const styles = `
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+        }
+        h1 {
+          color: purple;
+        }
+        h3 {
+          color: green;
+        }
+        b {
+          color: blue;
+        }
+      </style>
+    `;
+
+    // Create a full HTML document as a string
+    const fullContent = `
+      <html>
+        <head>
+          <title>Ticket</title>
+          ${styles}
+        </head>
+        <body>
+          ${ticketContent}
+        </body>
+      </html>
+    `;
+
+    // Create a Blob from the full HTML content
+    const ticketBlob = new Blob([fullContent], { type: "text/html" });
+    const downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(ticketBlob);
+    downloadLink.download = "ticket.html"; // Name of the downloaded file
+    downloadLink.click();
+
+    // Cleanup
+    URL.revokeObjectURL(downloadLink.href);
+  }
+</script>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!--
+<div id="ticketContainer" style="background-color: #f1f1f1; padding: 10px;">
+  <button onclick="downloadTicket()" style="background-color: #4CAF50;margin-left: 1050px; padding: 10px 20px; border: none; cursor: pointer;">Download Ticket</button>
+</div>
+
+<div class="center">
+  <h1 style="color: purple; margin-left: 250px; height: 50px;"><b>Thanks for Traveling with us!!</b></h1>
+  {% for tick in ticket %}
+    <h3 style="color: green; margin-left: 300px;"><b>Booked Time:</b> <b style="margin-left: 10px; color: blue;">
+    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>First Name:</b><b style="margin-left: 40px; color: blue;">{{ tick.firstname }}</b></h3>
+    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>Last Name:</b><b style="margin-left: 40px; color: blue;">{{ tick.lastname }}</b></h3>
+    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>Ticket ID:</b> <b style="margin-left: 60px; color: blue;"></b></h3>
+    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>Phone NO:</b><b style="margin-left: 50px; color: blue;">{{ tick.phone }}</b></h3>
+    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>From:</b> <b style="margin-left: 100px; color: blue;">{{ tick.depcity }}</b></h3>
+    <h3 style="color: green; margin-left: 300px; margin-bottom: 5;"><b>To:</b> <b style="margin-left: 135px; color: blue;">{{ tick.descity }}</b></h3>
+    <h3 style="color: green; margin-left: 300px;"><b>Side NO:</b> <b style="margin-left: 70px; color: blue;">{{ tick.side_no }}</b></h3>
+    <h3 style="color: green; margin-left: 300px;"><b>Travel Date:</b> <b style="margin-left: 27px; color: blue;">{{ tick.date }}</b></h3>
+    <h3 style="color: green; margin-left: 300px;"><b>Seat No:</b> <b style="margin-left: 70px; color: blue;">{{ tick.no_seat }}</b></h3>
+    <h3 style="color: green; margin-left: 300px;"><b>Price:</b> <b style="margin-left: 105px; color: blue;">{{ tick.price }}</b></h3>
+    <h3 style="color: green; margin-left: 300px;"><b>Plate NO:</b><b style="margin-left: 65px; color: blue;">{{ tick.plate_no }}</b></h3>
+  {% endfor %}
+</div>
+
+<script>
+  function downloadTicket() {
+    const ticketContent = document.getElementById("ticketContent").outerHTML;
+    const ticketBlob = new Blob([ticketContent], { type: "text/html" });
+    const downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(ticketBlob);
+    downloadLink.download = "ticket.html";
+    downloadLink.click();
+  }
+</script>
+-->
+
 
   <div class="copyright">
                 <div class="container">
@@ -241,10 +662,10 @@ function downloadTicket() {
                                         <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
                                                 <div class="footer_nav">
                                                         <ul class="footer_nav_list">
-                                                         <li class="main_nav_item"><a href="home">home</a></li>
-                                                                <li class="main_nav_item"><a href="get_ticket">show ticket</a></li>
-                                                                <li class="main_nav_item"><a href="book">book</a></li>
-                                                                <li class="main_nav_item"><a href="logout">logout</a></li>
+                                                         <li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'get_ticket' %}">show ticket</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'book' %}">book</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'logout' %}">logout</a></li>
 
 
                                                         </ul>

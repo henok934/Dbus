@@ -14,15 +14,9 @@
 <link rel="stylesheet" type="text/css" href="../static/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="../static/styles/responsive.css">
 </head>
-
-
-
 <body style="background-color: lightblue;">
-
 <div class="super_container">
-                <!-- Header -->
 <header class="header">
-                <!-- Top Bar -->
                 <div class="top_bar">
                         <div class="container">
                                 <div class="row">
@@ -51,15 +45,41 @@
                                                 </div>
                                                 <div class="main_nav_container ml-auto">
                                                         <ul class="main_nav_list">
-<li class="main_nav_item"><a href="home">home</a></li>
-<li class="main_nav_item"><a href="businsert">Registor Bus</a></li>
-<li class="main_nav_item"><a href="route">Registor Route</a></li>
-<li class="footer_nav_item"><a href="admin" style="color:white;">Create Admin</a></li>
-<li class="footer_nav_item"><a href="city" style="color:white;">Registor City</a></li>
-<select onchange="location.href = this.value;"><option value="admindelete">Select for Show</option><option value="routes">show routes</option><option value="users">show Users</option><option value="buses">show Buses</option><option value="comments">All Comments</option></select>
-<select onchange="location.href = this.value;"><option value="admindelete">Select for Delete</option><option value="admindelete">Delete Admin</option><option value="commentdelete">Delete Comment</option><option value="busdelete">Delete Bus</option><option value="citydelete">Delete City</option><option value="routedelete">Delete Route</option></select>
-<li class="footer_nav_item"><a href="logout" style="color:white;">Logout</a></li>
-
+							<li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                           <select onchange="location.href = this.value;">
+                           <option value="#">Select for Register</option>
+                           <option value="{% url 'businsert' %}">Register Bus</option>
+                           <option value="{% url 'route' %}">Register Routes</option>
+                           <option value="{% url 'admins' %}">Register Admin</option>
+                           <option value="{% url 'city' %}">Register City</option>
+                           <option value="{% url 'admins' %}">Register Admin </option>
+                           <option value="{% url 'worker' %}">Register Driver</option>
+                           </select>
+                          <select onchange="location.href = this.value;">
+                          <option value="#">Select for Update</option>
+                           <option value="{% url 'updatebus' %}">Update Side_no</option>
+                           <option value="{% url 'changebus' %}">Change Bus</option>
+                           </select>
+                           <select onchange="location.href = this.value;">
+                           <option value="{% url 'admindelete' %}">Select for Show</option>
+                           <option value="{% url 'routes' %}">show routes</option>
+                           <option value="{% url 'users' %}">show Users</option>
+                           <option value="{% url 'buses' %}">show Buses</option>
+                           <option value="{% url 'comments' %}">Show Comments</option>
+                           <option value="{% url 'driver' %}">Driver</option>
+                           <option value="{% url 'ticketinfo' %}">Booked Ticket</option>
+                           </select>
+                           <select onchange="location.href = this.value;">
+                           <option value="{% url 'admindelete' %}">Select for Delete</option>
+                           <option value="{% url 'admindelete' %}">Delete Admin</option>
+                           <option value="{% url 'commentdelete' %}">Delete Comment</option>
+                           <option value="{% url 'busdelete' %}">Delete Bus</option>
+                           <option value="{% url 'citydelete' %}">Delete City</option>
+                           <option value="{% url 'routedelete' %}">Delete Route</option>
+                           <option value="{% url 'workerdelete' %}">Delete driver</option>
+    <option value="{% url 'delete_ticket' %}">Delete Ticket</option>
+                           </select>
+                           <li class="footer_nav_item"><a href="{% url 'logout' %}" style="color:white;margin-left:50px;">Logout</a></li>
                                                         </ul>
                                                 </div>
                                                 <div class="content_search ml-lg-0 ml-auto">
@@ -101,14 +121,41 @@
                         <div class="menu_close_container"><div class="menu_close"></div></div>
                         <div class="logo menu_logo"><a href="#"><img src="../static/images/logo.png" alt=""></a></div>
                         <ul>
-<li class="main_nav_item"><a href="home">home</a></li>
-<li class="main_nav_item"><a href="businsert">Registor Bus</a></li>
-<li class="main_nav_item"><a href="route">Registor Route</a></li>
-<li class="footer_nav_item"><a href="admin" style="color:white;">Create Admin</a></li>
-<li class="footer_nav_item"><a href="city" style="color:white;">Registor City</a></li>
-<select onchange="location.href = this.value;"><option value="admindelete">Select for Show</option><option value="routes">show routes</option><option value="users">show Users</option><option value="buses">show Buses</option><option value="comments">All Comments</option></select>
-<select onchange="location.href = this.value;"><option value="admindelete">Select for Delete</option><option value="admindelete">Delete Admin</option><option value="commentdelete">Delete Comment</option><option value="busdelete">Delete Bus</option><option value="citydelete">Delete City</option><option value="routedelete">Delete Route</option></select>
-<li class="footer_nav_item"><a href="logout" style="color:white;">Logout</a></li>
+				<li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                           <select onchange="location.href = this.value;">
+                           <option value="#">Select for Register</option>
+                           <option value="{% url 'businsert' %}">Register Bus</option>
+                           <option value="{% url 'route' %}">Register Routes</option>
+                           <option value="{% url 'admins' %}">Register Admin</option>
+                           <option value="{% url 'city' %}">Register City</option>
+                           <option value="{% url 'admins' %}">Register Admin </option>
+                           <option value="{% url 'worker' %}">Register Driver</option>
+                           </select>
+                          <select onchange="location.href = this.value;">
+                          <option value="#">Select for Update</option>
+                           <option value="{% url 'updatebus' %}">Update Side_no</option>
+                           <option value="{% url 'changebus' %}">Change Bus</option>
+                           </select>
+                           <select onchange="location.href = this.value;">
+                           <option value="{% url 'admindelete' %}">Select for Show</option>
+                           <option value="{% url 'routes' %}">show routes</option>
+                           <option value="{% url 'users' %}">show Users</option>
+                           <option value="{% url 'buses' %}">show Buses</option>
+                           <option value="{% url 'comments' %}">Show Comments</option>
+                           <option value="{% url 'driver' %}">Driver</option>
+                           <option value="{% url 'ticketinfo' %}">Booked Ticket</option>
+                           </select>
+                           <select onchange="location.href = this.value;">
+                           <option value="{% url 'admindelete' %}">Select for Delete</option>
+                           <option value="{% url 'admindelete' %}">Delete Admin</option>
+                           <option value="{% url 'commentdelete' %}">Delete Comment</option>
+                           <option value="{% url 'busdelete' %}">Delete Bus</option>
+                           <option value="{% url 'citydelete' %}">Delete City</option>
+                           <option value="{% url 'routedelete' %}">Delete Route</option>
+                           <option value="{% url 'workerdelete' %}">Delete driver</option>
+    <option value="{% url 'delete_ticket' %}">Delete Ticket</option>
+                           </select>
+                           <li class="footer_nav_item"><a href="{% url 'logout' %}" style="color:white;margin-left:50px;">Logout</a></li>
                         </ul>
                 </div>
         </div>
@@ -117,50 +164,108 @@
     <div class="success">
     <h3 style="color: yellow; margin-left: 150px;"><b>{{ success }}</b><span style="margin-left:30px;" class="symbol">✔</span></h3>
     </div>
+
     {% endif %}
       {% if error %}
     <div class="success">
     <h3 style="color: red; margin-left: 150px;"><b>{{ error }}</b><span style="margin-left:30px;" class="symbol">X</span></h3>
     </div>
     {% endif %}
-
 	 <h1 style="margin-left:200px;color:blue;"><b>Delete Admin Account</b> </h1></br>
 <table style="margin-left: 100px; width: 400px; background-color: lightgray;">
-    <thead>
-  <tr style="background-color: lightgray; width: 400px;">
-    <th style="padding-top: 10px;">
-    </th>
-</tr>
-<tr>
-    <th><h3><b style="color: red; background-color: green;">No</b></h3></th>
-    <th><h3><b style="color: white; background-color: green; margin-left: 40px;">Firest Name</b></h3></th>
-    <th><h3><b style="color: white; background-color: green; margin-left: 40px;">Last Name</b></h3></th>
-    <th><h3><b style="color: white; background-color: green; margin-left: 40px;">User Name</b></h3></th>
-</tr>
+<thead>
+    <tr>
+        <th><h3><b style="color: red; background-color: green;">No</b></h3></th>
+
+        <th style="text-align: center; padding-bottom: 10px;">
+            <b style="color: white; background-color: green; padding: 10px; display: inline-block;">First Name</b>
+        </th>
+        <th style="text-align: center; padding-bottom: 10px;">
+            <b style="color: white; background-color: green; padding: 10px; display: inline-block;">Last Name</b>
+        </th>
+        <th style="text-align: center; padding-bottom: 10px;">
+            <b style="color: white; background-color: green; padding: 10px; display: inline-block;">User Name</b>
+        </th>
+        <th style="text-align: center; padding-bottom: 10px;">
+            <b style="color: white; background-color: green; padding: 10px; display: inline-block;">Actions</b>
+        </th>
+    </tr>
 </thead>
 
-    <tbody style="background-color: lightgray; margin-left: 300px;">
-        {% for admin in admins %}
-        <tr>
-            <td><h3><b style="color: brown;">{{ loop.index }}</b></h3></td>
-            <td>
-                <form action="/delete" method="POST">
-                    <input type="text" name="fname" value="{{ admin.fname }}" readonly style="height: 50px; margin-left: 20px; text-align: center; color: blue; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;">
-            </td>
-            <td>
-                <input type="text" name="lname" value="{{ admin.lname }}" readonly style="height: 50px; margin-left: 20px; text-align: center; color: blue; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;">
-            </td>
-            <td>
-                <input type="text" name="username" value="{{ admin.username }}" readonly style="height: 50px; margin-left: 20px; text-align: center; color: blue; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;">
-            </td>
-            <td>
-                <button type="submit" style="height: 40px; width: 100px; background-color: blue; margin-left: 40px; margin-right:20px; text-align: center; color: brown; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;"><b style="color: red;">Delete</b></button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
+<tbody style="background-color: lightgray;">
+    {% for admin in admins %}
+    <tr>
+        <td style="text-align: center;">
+            <b style="color: brown;">{{ loop.index }}</b>
+        </td>
+        <td>
+            <form action="{% url 'admindelete' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="fname" value="{{ admin.fname }}" readonly style="height: 50px; margin-left: 20px; text-align: center; color: blue; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;">
+        </td>
+        <td>
+            <input type="text" name="lname" value="{{ admin.lname }}" readonly style="height: 50px; margin-left: 20px; text-align: center; color: blue; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;">
+        </td>
+        <td>
+            <input type="text" name="username" value="{{ admin.username }}" readonly style="height: 50px; margin-left: 20px; text-align: center; color: blue; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;">
+        </td>
+        <td>
+            <button type="submit" style="height: 40px; width: 100px; background-color: blue; margin-left: 40px; margin-right: 20px; text-align: center; color: brown; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;">
+                <b style="color: red;">Delete</b>
+            </button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
 </table>
+
+
+<!--
+{% if error %}
+        <div class="error">
+            <h3><b>{{ error }}</b></h3>
+        </div>
+    {% endif %}
+
+    <table style="margin-left: 100px; margin-top: 20px;">
+        <thead>
+            <tr style="background-color: lightgray;">
+                <th><h3><b style="color: red;">No</b></h3></th>
+                <th><h3><b style="color: white; background-color: green;">Departure</b></h3></th>
+                <th><h3><b style="color: white; background-color: green;">Destination</b></h3></th>
+                <th><h3><b style="color: white; background-color: green;">Plate No</b></h3></th>
+                <th><h3><b style="color: white; background-color: green;">Travel Date</b></h3></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody style="background-color: lightgray;">
+            {% for route in routes %}
+            <tr>
+                <td><h3><b style="color: brown;">{{ loop.index }}</b></h3></td>
+                <td>
+                    <form action="{% url 'Select' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="depcity" value="{{ route.depcity }}" readonly style="height: 50px; margin-left: 20px; text-align: center; color: blue; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;">
+                </td>
+                <td>
+                    <input type="text" name="descity" value="{{ route.descity }}" readonly style="height: 50px; margin-left: 20px; text-align: center; color: blue; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;">
+                </td>
+                <td>
+                    <input type="text" name="plate_no" value="{{ route.plate_no }}" readonly style="height: 50px; margin-left: 20px; text-align: center; color: blue; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;">
+                </td>
+                <td>
+                    <input type="text" name="date" value="{{ route.date }}" readonly style="height: 50px; margin-left: 20px; text-align: center; color: blue; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;">
+                </td>
+                <td>
+                    <button type="submit" style="height: 40px; width: 100px; background-color: blue; margin-left: 50px; text-align: center; color: brown; border-radius: 10px; border: 1px solid #ccc; font-weight: bold;"><b style="color: pink;">Select</b></button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    -->
 
 </br></br></br</br></br>
   </br></br></br>
@@ -178,15 +283,41 @@
                                         <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
                                                 <div class="footer_nav">
                                                         <ul class="footer_nav_list">
-                                   			<li class="main_nav_item"><a href="home">home</a></li>
-<li class="main_nav_item"><a href="businsert">Registor Bus</a></li>
-<li class="main_nav_item"><a href="route">Registor Route</a></li>
-<li class="footer_nav_item"><a href="admin" style="color:white;">Create Admin</a></li>
-<li class="footer_nav_item"><a href="city" style="color:white;">Registor City</a></li>
-<select onchange="location.href = this.value;"><option value="admindelete">Select for Show</option><option value="routes">show routes</option><option value="users">show Users</option><option value="buses">show Buses</option><option value="comments">All Comments</option></select>
-<select onchange="location.href = this.value;"><option value="admindelete">Select for Delete</option><option value="admindelete">Delete Admin</option><option value="commentdelete">Delete Comment</option><option value="busdelete">Delete Bus</option><option value="citydelete">Delete City</option><option value="routedelete">Delete Route</option></select>
-<li class="footer_nav_item"><a href="logout" style="color:white;">Logout</a></li>
-
+                                   			<li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                           <select onchange="location.href = this.value;">
+                           <option value="#">Select for Register</option>
+                           <option value="{% url 'businsert' %}">Register Bus</option>
+                           <option value="{% url 'route' %}">Register Routes</option>
+                           <option value="{% url 'admins' %}">Register Admin</option>
+                           <option value="{% url 'city' %}">Register City</option>
+                           <option value="{% url 'admins' %}">Register Admin </option>
+                           <option value="{% url 'worker' %}">Register Driver</option>
+                           </select>
+                          <select onchange="location.href = this.value;">
+                          <option value="#">Select for Update</option>
+                           <option value="{% url 'updatebus' %}">Update Side_no</option>
+                           <option value="{% url 'changebus' %}">Change Bus</option>
+                           </select>
+                           <select onchange="location.href = this.value;">
+                           <option value="{% url 'admindelete' %}">Select for Show</option>
+                           <option value="{% url 'routes' %}">show routes</option>
+                           <option value="{% url 'users' %}">show Users</option>
+                           <option value="{% url 'buses' %}">show Buses</option>
+                           <option value="{% url 'comments' %}">Show Comments</option>
+                           <option value="{% url 'driver' %}">Driver</option>
+                           <option value="{% url 'ticketinfo' %}">Booked Ticket</option>
+                           </select>
+                           <select onchange="location.href = this.value;">
+                           <option value="{% url 'admindelete' %}">Select for Delete</option>
+                           <option value="{% url 'admindelete' %}">Delete Admin</option>
+                           <option value="{% url 'commentdelete' %}">Delete Comment</option>
+                           <option value="{% url 'busdelete' %}">Delete Bus</option>
+                           <option value="{% url 'citydelete' %}">Delete City</option>
+                           <option value="{% url 'routedelete' %}">Delete Route</option>
+                           <option value="{% url 'workerdelete' %}">Delete driver</option>
+    <option value="{% url 'delete_ticket' %}">Delete Ticket</option>
+                           </select>
+                           <li class="footer_nav_item"><a href="{% url 'logout' %}" style="color:white;margin-left:50px;">Logout</a></li>
 
                                                         </ul>
                                                 </div>

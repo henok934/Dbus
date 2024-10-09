@@ -33,8 +33,8 @@
 							</ul>
 						</div>
 						<div class="user_box ml-auto">
-							<div class="user_box_login user_box_link"><a href="login">login</a></div>
-							<div class="user_box_register user_box_link"><a href="registor">register</a></div>			
+							<div class="user_box_login user_box_link"><a href="{% url 'login' %}">login</a></div>
+							<div class="user_box_register user_box_link"><a href="{% url 'registor' %}">register</a></div>			
 						</div>
 					</div>
 				</div>
@@ -49,10 +49,10 @@
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="home">home</a></li>
-								  <li class="main_nav_item"><a href="get_ticket">show ticket</a></li>
-								<li class="main_nav_item"><a href="book">book</a></li>
-							<li class="main_nav_item"><a href="logout">logout</a></li>
+								<li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+								  <li class="main_nav_item"><a href="{% url 'get_ticket' %}">show ticket</a></li>
+								<li class="main_nav_item"><a href="{% url 'book' %}">book</a></li>
+							<li class="main_nav_item"><a href="{% url 'logout' %}">logout</a></li>
 							</ul>
 						</div>
 						<div class="content_search ml-lg-0 ml-auto">
@@ -94,10 +94,10 @@
 			<div class="menu_close_container"><div class="menu_close"></div></div>
 			<div class="logo menu_logo"><a href="#"><img src="../static/images/logo.png" alt=""></a></div>
 			<ul>
-				<li class="menu_item"><a href="home">home</a></li>
-				<li class="menu_item"><a href="get_ticket">show Tickets</a></li>
-				<li class="menu_item"><a href="book">book</a></li>
-				<li class="menu_item"><a href="logout">logout</a></li>
+				<li class="menu_item"><a href="{% url 'home' %}">home</a></li>
+				<li class="menu_item"><a href="{% url 'get_ticket' %}">show Tickets</a></li>
+				<li class="menu_item"><a href="{% url 'book' %}">book</a></li>
+				<li class="menu_item"><a href="{% url 'logout' %}">logout</a></li>
 			</ul>
 		</div>
 	</div></br> 
@@ -113,8 +113,6 @@
     margin-right: 40px;
   }
 </style>
-
-
 </br></br></br></br></br></br></br></br>
 {% if success %}
     <div class="success">
@@ -134,7 +132,6 @@
     body {
         background-color: pink;
     }
-
     .error {
         background-color: lightcoral;
         display: inline-block;
@@ -143,7 +140,6 @@
         width: 100%;
         box-sizing: border-box;
     }
-
     .symbol {
         background-color: pink;
         color: black;
@@ -151,7 +147,7 @@
         padding: 5px;
         margin-left: 70px;    }
 </style>
-    <h1 style="color: blue; text-align: right; white-space: nowrap;"><b style="color:green;">Travel Date </b><b>{{ route[0]}}</b></h1>
+    <h1 style="color: blue; text-align: right; white-space: nowrap;"><b style="color:green;">Travel Date </b><b>{{ route.date}}</b></h1>
     <div class="search18">
       <div class="container fill_height">
         <div class="row fill_height">
@@ -162,28 +158,16 @@
 	 <strong style="background-color: green; color: white;">{{ kery }}:</strong><span style="background-color: green; color: white;">Seats Left</span></h3>
 
 <div class="search_panel active">
-  <form action="ticket" method="post" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+	<form action="{% url 'ticket' %}" method="post" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+	   {% csrf_token %}
     <div class="search_item">
       {{new_account}}
       <h1 style="color: blue; text-align: right; white-space: nowrap;">
         <b style="color:green; margin-left: 150px;">From:</b>
-        <b>{{ route[1]}}</b>
+        <b>{{ route.depcity}}</b>
         <b style="color:green;">To:</b>
-        <b>{{ route[2] }}</b>
+        <b>{{ route.descity }}</b>
       </h1>
-	    <!--
-    <strong style="background-color: green; color: white;">{{ kery }}:</strong>
-    <span style="background-color: green; color: white;">Seats Left</span>
-</h3>
-
-            <div class="search_panel active">
-
-              <form action="ticket" method="post" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-		      <div class="search_item">
-
-
-			  {{new_account}}
-			  <h1 style="color: blue; text-align: right; white-space: nowrap;"><b style="color:green; margin-left: 150px;">From:</b><b> {{ route[1]}}</b> <b style="color:green;">To:</b> <b>{{ route[2] }}</b></h1>  -->
 <style>                  
 #firstname {
 width: 280px;
@@ -193,14 +177,8 @@ height: 40px;
   		    <div class="form-row">
   		    <div style="display: flex; align-items: center; margin-left: 300px;">
   		    <div style="margin-right: 10px; white-space: nowrap;">first name:</div>
-		    <!--
-		    <input type="text" style="margin-left: -5px; width: 280px;" class="center-input" id="firstname" size="30" name="firstname" maxlength="20">
-		    -->
 	<input type="text" size="30" id="firstname" name="firstname" maxlength="15" style="margin-left: -5px; width: 280px; text-align: center; text-transform: capitalize;" oninput="validatedepcity(this)" required="descity is required" class="center-input">
-
 <span id="error-message" style="color: red; display: none; position: absolute; top: 100%; left: 0;"></span>
-
-
 <script>
 function validatedepcity(input) {
   var value = input.value.trim();
@@ -221,12 +199,9 @@ function validatedepcity(input) {
 
   input.value = value.charAt(0).toUpperCase() + value.slice(1);
 }
-
-// Display error message when the input field is empty on page load
 document.addEventListener("DOMContentLoaded", function() {
   var input = document.getElementById("mySelect");
-  var errorMessage = document.getElementById("error-message");
-  
+  var errorMessage = document.getElementById("error-message"); 
   if (!input.value.trim()) {
     errorMessage.textContent = "";
     errorMessage.style.display = "block";
@@ -237,21 +212,12 @@ document.addEventListener("DOMContentLoaded", function() {
 		    </div>
 		    <div style="display: flex; align-items: center; margin-left: 300px;">
 		    <div style="margin-right: 10px;">lastname</div>
-                    
-<!--
-		    <input type="text" style="margin-left: 7px;" class="center-input" id="firstname" size="30" name="lastname" maxlength="20">
--->
-
   <input type="text" size="30" id="firstname" name="lastname" maxlength="15" style="margin-left: 7px; width: 280px; text-align: center; text-transform: capitalize;" oninput="validatedepcity(this)" required="descity is required" class="center-input">
-
 <span id="error-message" style="color: red; display: none; position: absolute; top: 100%; left: 0;"></span>
-
-
 <script>
 function validatedepcity(input) {
   var value = input.value.trim();
   var errorMessage = document.getElementById("error-message");
-
   if (!value.match(/^[a-zA-Z]+$/)) {
     errorMessage.textContent = "Please enter a character for name.";
     errorMessage.style.display = "block";
@@ -267,8 +233,6 @@ function validatedepcity(input) {
 
   input.value = value.charAt(0).toUpperCase() + value.slice(1);
 }
-
-// Display error message when the input field is empty on page load
 document.addEventListener("DOMContentLoaded", function() {
   var input = document.getElementById("mySelect");
   var errorMessage = document.getElementById("error-message");
@@ -284,10 +248,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		    </div>
 		    <div style="display: flex; align-items: center; margin-left: 300px;">
                     <div>Phone:</div>
-		    <!--
-                    <input type="text" style="margin-left: 25px;" size="30" id="firstname" onKeyPress="return onlyNum(event)" pattern="[0-9]{10}" style="margin-left: 10px;" name="phone" maxlength="10" required="Phone is required" class="center-input"> class="check_out search_input wide-input"
-		    -->
-
  <input type="text" style="margin-left: -3px;" size="30" id="firstname" style="margin-left: 10px;"  class="center-input"  size="30" maxlength="10" oninput="validatePhone(this)" pattern="[0-9]+" name="phone" maxlength="10" required>
         <div id="phoneError" style="color: red;">
 <script>
@@ -309,30 +269,15 @@ function validatePhone(input) {
     }
 }
 </script></div>
-
 		    </div>
-		    <div style="display: flex; align-items: center; margin-left: 300px;">
-		    <div>Departure:</div>
-                    <input type="text" size="30" id="firstname" name="depcity" value="{{ route[1]}}" maxlength="20" required="descity is required" style="margin-left: -30px;" class="center-input" readonly>		    </div>
-		    <div style="display: flex; align-items: center; margin-left: 300px;">
-                    <div>Destination:</div>
-                    <input type="text"style="margin-left: -37px;" size="30" name="descity" id="firstname" placeholder="descity" value="{{ route[2] }}" maxlength="20" required="descity is required" class="center-input" readonly>		    </div>
-		    <div style="display: flex; align-items: center; margin-left: 300px;">
-		    <div style="margin-right: 10px; white-space: nowrap;">Travel Date:</div>
-                    <input type="date" style="margin-left: -8px; width: 280px;" size="30" name="date" id="firstname" value="{{ route[0] }}" maxlength="20" required="descity is required" class="center-input" readonly>
 
-<!--
-		      <div style="display: flex; align-items: center; margin-left: 300px;">
-                      <div style="margin-right: 10px; white-space: nowrap;">Seat No:</div>
-	 <input type="text" style="margin-left: 20px; width: 280px; color: red; font-weight: bold;" name="no_seat" id="firstname" value="{{ wenberkutr }}" size="30" required="required" class="center-input" readonly>		   
-		      </div>
--->
-		    </div>
-<div style="display: flex; align-items: center; margin-left: 300px;">
-    <div style="margin-right: 10px; white-space: nowrap;">Seat No:</div>
-    <input type="text" style="margin-left: 10px;" value="{{wenberkutr}}" class="center-input" name="no_seat" size="30" maxlength="10" oninput="validateSeatNo(this)" pattern="[0-9]*" required readonly>
-    <div id="seatNoError" style="color: red; display: none;"></div>
-</div>
+        <input type="hidden" size="30" name="depcity" value="{{ route.depcity }}" maxlength="20" required class="center-input" readonly style="width: 120px;">
+        <input type="hidden" size="30" name="descity" value="{{ route.descity }}" maxlength="20" required class="center-input" readonly style="width: 120px;">
+        <input type="hidden" size="30" name="date" value="{{ route.date }}" maxlength="20" required class="center-input" readonly style="width: 120px;">
+        <input type="hidden" name="no_seat" value="{{ wenberkutr }}" maxlength="10" required class="center-input" readonly style="width: 120px;">
+        <input type="hidden" size="30" name="price" value="{{ route.price|default:'0' }}" maxlength="10" required class="center-input" readonly style="width: 120px;">
+        <input type="hidden" name="side_no" value="{{ route.side_no }}" maxlength="10" required class="center-input" readonly style="width: 120px;">
+        <input type="hidden" name="plate_no" value="{{ route.plate_no }}" maxlength="10" required class="center-input" readonly style="width: 120px;">
 
 <script>
 function validateSeatNo(input) {
@@ -349,92 +294,10 @@ function validateSeatNo(input) {
     }
 }
 </script>
-<!--
-<div style="display: flex; align-items: center; margin-left: 300px;">
-    <div style="margin-right: 10px; white-space: nowrap;">Seat No:</div>
-    <input type="text" size="30" id="firstname" style="margin-left: 10px;" value="{{wenberkutr}}" class="center-input" name="no_seat" size="30" maxlength="10" oninput="validateSeatNo(this)" pattern="[0-9]+" required readonly>
-    <div id="seatNoError" style="color: red;"></div>
-</div>
-
-<script>
-function validateSeatNo(input) {
-    var seatNoError = document.getElementById("seatNoError");
-    var seatNo = input.value.replace(/[^0-9]/g, '');
-    if (isNaN(parseInt(seatNo))) {
-        seatNoError.textContent = "Invalid seat number!";
-        input.setCustomValidity("Invalid seat number!");
-    } else {
-        seatNoError.textContent = "";
-        input.setCustomValidity("");
-    }
-}
-</script>
--->
-
-
-
-
-
-
-
-
-<!--
-<div style="display: flex; align-items: center; margin-left: 300px;">
-<div style="margin-right: 10px; white-space: nowrap;">Seat No:</div>
-<input type="text" style="margin-left: -3px;" size="30" id="firstname" style="margin-left: 10px;" value="{{wenberkutr}}" class="center-input" name="no_seat"  size="30" maxlength="10" oninput="validatePhone(this)" pattern="[0-9]+" maxlength="10" required readonly>        <div id="phoneError" style="color: red;">
-<script>
-function validatePhone(input) {
-    var phoneError = document.getElementById("phoneError");
-    var phoneNumber = input.value.replace(/[^0-9]/g, '');
-    if (isNaN(parseInt(phoneNumber))) {
-        phoneError.textContent = "Bus is already Full!!";
-        input.setCustomValidity("Bus is already Full!!");
-    } 
-	else {
-        phoneError.textContent = "";
-        input.setCustomValidity("");
-    }
-}
-</script>
-
-	</div>
-</div>
--->
-<div style="display: flex; align-items: center; margin-left: 300px;">
-                    <div>price:</div>
-                    <input type="text" style="margin-left: 9px;" size="30" maxlength="4" id="firstname" name="price" value="{{ route[4] }}" maxlength="10" required="price is required" class="center-input" readonly>
-		    </div>
-		    <div style="display: flex; align-items: center; margin-left: 300px;">
-		    <div>side_no</div>
-		    <input type="text" name="side_no" style="margin-left: -4px;" id="firstname" value ="{{ route[5] }}" size="30" maxlength="10" required="plate_no is required" class="center-input" readonly>		    </div>
-		    <div style="display: flex; align-items: center; margin-left: 300px;">
-		    <div>plate_no</div>
-                    <input type="text" name="plate_no" style="margin-left: -9px;" id="firstname" value="{{ route[6] }}" size="30" maxlength="10" required="plate_no is required" class="center-input" readonly>
-		    </div>
-		   
-		    <!--
-		    <div style="display: flex; align-items: center; margin-left: 300px;">
-                    <div>user_id:</div>
-		    
-		    <input type="text" size = "33" id="firstname" style="margin-left: 35px; width: 500px !important;" name="user_id" value="" maxlength="10" required="user_id is required" class="center-input">
-		    </div>
-		    -->
-
-		    <div style="text-align: center; margin-left: 460px;">
+		    <div style="text-align: center; margin-left: 450px;">
 		    <button  id="submitButton"  onclick="validateInput()" class="button search_button">Book</button></br></br>
 		    </br></br></br></br>
 		   
-		    <!--<h3> {{ kery }}: Seats Left </h3>
-		                   <h3 style="margin-left: 800px; margin-bottom: 20px; background-color: green; color: purple; display: inline-block; padding: 10px;">
-    {{ kery }}: <span style="color: white;">Seats Left</span>
-</h3>
--->
-<!--   
-<h3 style="text-align: center; margin-left: 300px; background-color: green; color: white; display: inline-block;">
-    <strong style="background-color: green; color: white;">{{ kery }}:</strong> 
-    <span style="background-color: green; color: white;">Seats Left</span>
-</h3>
--->
  {% endfor %}
  {% endif %}
 
@@ -443,6 +306,121 @@ function validatePhone(input) {
                 </div>
               </form>
             </div>
+	   
+
+<!--
+<div class="container mt-5">
+    <div class="search_panel active border rounded p-4 shadow" style="background-color: #f8f9fa;">
+        <form action="{% url 'ticket' %}" method="post" id="search_form_1" class="search_panel_content">
+            {% csrf_token %}
+            <h1 class="text-center text-primary mb-4">Registration</h1>
+
+            <div class="form-row mb-3">
+                <div class="col-md-6">
+                    <label for="firstname" class="font-weight-bold">First Name:</label>
+                    <input type="text" id="firstname" name="firstname" class="form-control" maxlength="15" required 
+                           oninput="validateFirstName(this)">
+                    <span id="error-message-first" class="text-danger" style="display: none;"></span>
+                </div>
+                <div class="col-md-6">
+                    <label for="lastname" class="font-weight-bold">Last Name:</label>
+                    <input type="text" id="lastname" name="lastname" class="form-control" maxlength="15" required 
+                           oninput="validateLastName(this)">
+                    <span id="error-message-last" class="text-danger" style="display: none;"></span>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="phone" class="font-weight-bold">Phone:</label>
+                <input type="text" id="phone" name="phone" class="form-control" maxlength="10" required 
+                       oninput="validatePhone(this)">
+                <span id="phoneError" class="text-danger" style="display: none;"></span>
+            </div>
+
+            <!-- Hidden Inputs -->
+            <input type="hidden" name="depcity" value="{{ route.depcity }}" required>
+            <input type="hidden" name="descity" value="{{ route.descity }}" required>
+            <input type="hidden" name="date" value="{{ route.date }}" required>
+            <input type="hidden" name="no_seat" value="{{ wenberkutr }}" required>
+            <input type="hidden" name="price" value="{{ route.price|default:'0' }}" required>
+            <input type="hidden" name="side_no" value="{{ route.side_no }}" required>
+            <input type="hidden" name="plate_no" value="{{ route.plate_no }}" required>
+            <div class="text-center mt-4">
+                <button type="button" id="submitButton" class="btn btn-success" onclick="validateForm()">Book</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Include jQuery for validation -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function validateFirstName(input) {
+        const errorMessage = document.getElementById("error-message-first");
+        const value = input.value.trim();
+        if (!/^[a-zA-Z]+$/.test(value) || value.length < 4) {
+            errorMessage.textContent = "Please enter at least 4 alphabetic characters.";
+            errorMessage.style.display = "block";
+            input.setCustomValidity("Invalid input.");
+        } else {
+            errorMessage.style.display = "none";
+            input.setCustomValidity("");
+        }
+        input.value = value.charAt(0).toUpperCase() + value.slice(1);
+    }
+
+    function validateLastName(input) {
+        const errorMessage = document.getElementById("error-message-last");
+        const value = input.value.trim();
+        if (!/^[a-zA-Z]+$/.test(value) || value.length < 4) {
+            errorMessage.textContent = "Please enter at least 4 alphabetic characters.";
+            errorMessage.style.display = "block";
+            input.setCustomValidity("Invalid input.");
+        } else {
+            errorMessage.style.display = "none";
+            input.setCustomValidity("");
+        }
+        input.value = value.charAt(0).toUpperCase() + value.slice(1);
+    }
+
+    function validatePhone(input) {
+        const phoneError = document.getElementById("phoneError");
+        const phoneNumber = input.value.replace(/[^0-9]/g, '');
+        if (!/^[0-9]+$/.test(phoneNumber) || !phoneNumber.startsWith("09") || phoneNumber.length !== 10) {
+            phoneError.textContent = "Please enter a valid phone number starting with 09 and 10 digits long.";
+            phoneError.style.display = "block";
+            input.setCustomValidity("Invalid phone number.");
+        } else {
+            phoneError.style.display = "none";
+            input.setCustomValidity("");
+        }
+    }
+
+    function validateForm() {
+        // Optionally, you can add additional validation here before submitting the form
+        document.getElementById("search_form_1").submit();
+    }
+</script>
+
+<!-- Bootstrap CSS (if needed) -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </div>
         </div>
       </div>
@@ -543,10 +521,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                         <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
                                                 <div class="footer_nav">
                                                         <ul class="footer_nav_list">
-                                                                <li class="main_nav_item"><a href="home">home</a></li>
-                                                                <li class="main_nav_item"><a href="get_ticket">show ticket</a></li>
-                                                                <li class="main_nav_item"><a href="book">book</a></li>
-                                                                <li class="main_nav_item"><a href="logout">logout</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'get_ticket' %}">show ticket</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'book' %}">book</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'logout' %}">logout</a></li>
                                                         </ul>
                                                 </div>
                                         </div>

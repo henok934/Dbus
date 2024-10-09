@@ -8,11 +8,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
 <link href="../static/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="../static/stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="../static/stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="../static/stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="../static/stylesheet" type="text/css" href="styles/main_styles.css">
-<link rel="../static/stylesheet" type="text/css" href="styles/responsive.css">
+<link rel="../static/stylesheet" type="text/css" href="{% url 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="../static/stylesheet" type="text/css" href="{% url 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="../static/stylesheet" type="text/css" href="{% url 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="../static/stylesheet" type="text/css" href="{% url 'styles/main_styles.css' %}">
+<link rel="../static/stylesheet" type="text/css" href="{% url 'styles/responsive.css' %}">
 </head>
 
 <body>
@@ -41,8 +41,8 @@
 							</ul>
 						</div>
 						<div class="user_box ml-auto">
-							<div class="user_box_login user_box_link"><a href="login">login</a></div>
-							<div class="user_box_register user_box_link"><a href="registor">register</a></div>
+							<div class="user_box_login user_box_link"><a href="{% url 'login' %}">login</a></div>
+							<div class="user_box_register user_box_link"><a href="{% url 'registor' %}">register</a></div>
 							<div class="search2">
 		
 
@@ -62,7 +62,7 @@
 														</td></tr>
 														   
 																			 <tr><td>&nbsp;</td><td>
-													<button class="button search_button"><a href="get_user">submit</button>
+													<button class="button search_button"><a href="{% url 'get_user' %}">submit</button>
 														</div>
 												</form>
 											</div>
@@ -89,11 +89,11 @@
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="home">home</a></li>
-								<li class="main_nav_item"><a href="about">about us</a></li>
-								<li class="main_nav_item"><a href="offers">offers</a></li>
-								<li class="main_nav_item"><a href="blog.html">news</a></li>
-								<li class="main_nav_item"><a href="comments">comment</a></li>
+								<li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+								<li class="main_nav_item"><a href="{% url 'about' %}">about us</a></li>
+								<li class="main_nav_item"><a href="{% url 'offers' %}">offers</a></li>
+								<li class="main_nav_item"><a href="{% url 'blog.html' %}">news</a></li>
+								<li class="main_nav_item"><a href="{% url 'comments' %}">comment</a></li>
 								
 							</ul>
 						</div>
@@ -140,11 +140,11 @@
 			<div class="menu_close_container"><div class="menu_close"></div></div>
 			<div class="logo menu_logo"><a href="#"><img src="../static/images/logo.png" alt=""></a></div>
 			<ul>
-				<li class="menu_item"><a href="home">home</a></li>
-				<li class="menu_item"><a href="about">about us</a></li>
-				<li class="menu_item"><a href="offers">check routes</a></li>
-				<li class="menu_item"><a href="blog.html">news</a></li>
-				<li class="menu_item"><a href="comments">comment</a></li>
+				<li class="menu_item"><a href="{% url 'home' %}">home</a></li>
+				<li class="menu_item"><a href="{% url 'about' %}">about us</a></li>
+				<li class="menu_item"><a href="{% url 'offers' %}">check routes</a></li>
+				<li class="menu_item"><a href="{% url 'blog.html' %}">news</a></li>
+				<li class="menu_item"><a href="{% url 'comments' %}">comment</a></li>
 				
 			</ul>
 		</div>
@@ -370,10 +370,10 @@
 			<div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
 				<div class="footer_nav">
 					<ul class="footer_nav_list">
-						<li class="footer_nav_item"><a href="home">home</a></li>
-						<li class="footer_nav_item"><a href="about">about us</a></li>
-						<li class="footer_nav_item"><a href="offers">offers</a></li>
-						<li class="footer_nav_item"><a href="comments">news</a></li>
+						<li class="footer_nav_item"><a href="{% url 'home' %}">home</a></li>
+						<li class="footer_nav_item"><a href="{% url 'about' %}">about us</a></li>
+						<li class="footer_nav_item"><a href="{% url 'offers' %}">offers</a></li>
+						<li class="footer_nav_item"><a href="{% url 'comments' %}">news</a></li>
 				
 					</ul>
 				</div>

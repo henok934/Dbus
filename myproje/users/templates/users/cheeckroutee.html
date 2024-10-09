@@ -34,8 +34,8 @@
 							</ul>
 						</div>
 						<div class="user_box ml-auto">
-							<div class="user_box_login user_box_link"><a href="login">login</a></div>
-							<div class="user_box_register user_box_link"><a href="registor">register</a></div>
+							<div class="user_box_login user_box_link"><a href="{% url 'login' %}">login</a></div>
+							<div class="user_box_register user_box_link"><a href="{% url 'registor' %}">register</a></div>
 						</div>
 					</div>
 				</div>
@@ -50,10 +50,10 @@
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-							    <li class="main_nav_item"><a href="home">home</a></li>
-                                                            <li class="main_nav_item"><a href="get_ticket">show ticket</a></li>
-                                                            <li class="main_nav_item"><a href="book">book</a></li>
-                                                            <li class="main_nav_item"><a href="logout">logout</a></li>
+							    <li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                                                            <li class="main_nav_item"><a href="{% url 'get_ticket' %}">show ticket</a></li>
+                                                            <li class="main_nav_item"><a href="{% url 'book' %}">book</a></li>
+                                                            <li class="main_nav_item"><a href="{% url 'logout' %}">logout</a></li>
 							</ul>
 						</div>
 						<div class="content_search ml-lg-0 ml-auto">
@@ -99,11 +99,11 @@
 			<div class="menu_close_container"><div class="menu_close"></div></div>
 			<div class="logo menu_logo"><a href="#"><img src="../static/images/logo.png" alt=""></a></div>
 			<ul>
-				   <li class="main_nav_item"><a href="home">home</a></li>
-                                   <li class="main_nav_item"><a href="get_ticket">show ticket</a></li>
-                                   <li class="main_nav_item"><a href="book">book</a></li>
-				   <li class="main_nav_item"><a href="book">book</a></li>
-                                   <li class="main_nav_item"><a href="logout">logout</a></li>
+				   <li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                                   <li class="main_nav_item"><a href="{% url 'get_ticket' %}">show ticket</a></li>
+                                   <li class="main_nav_item"><a href="{% url 'book' %}">book</a></li>
+				   <li class="main_nav_item"><a href="{% url 'book' %}">book</a></li>
+                                   <li class="main_nav_item"><a href="{% url 'logout' %}">logout</a></li>
 			</ul>
 		</div>
 	</div>
@@ -151,27 +151,23 @@
     </div>
 {% endif %}
 									<div class="search_panel active">
-									<form action="book" method="post" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">										    <div class="search_item">
+									<form action="{% url 'book' %}" method="post" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+									{% csrf_token %}
+
+										<div class="search_item">
 									<div><h1>From</h1></div>
 <select style="width: 200px;" name = "depcity" id="gender-input" class="check_in search_input" style="text-align: center;" required="Select Destination city." class="check_in search_input">
-    <option value="" style="color: green; font-weight: bold;">Select Desparture</option>
+    <option value="style="color: green; font-weight: bold;">Select Desparture</option>
     {% if des %}
         {% for depcity in des %}
          <option value="{{ depcity.depcity }}" style="color: blue; font-weight: bold;">{{ depcity.depcity }}</option>
         {% endfor %}
     {% endif %}
 </select>
-
-
-
-
-
-
-
 									</div>
 									<div class="search_item">													<div><h1>TO</h1></div>
 					<select style="width: 200px; text-align: center; margin-right:400px;" name="descity" id="gender-input" class="check_in search_input" required="Select Destination city.">
-    <option value="" style="color: green; font-weight: bold;">Select Desparture</option>
+    <option value="style="color: green; font-weight: bold;">Select Desparture</option>
     {% if des %}
         {% for depcity in des %}
             <option value="{{ depcity.depcity }}" style="color: blue; font-weight: bold;">{{ depcity.depcity }}</option>
@@ -179,9 +175,7 @@
     {% endif %}
 </select>
 
-
 					
-
 									</div>			<div class="search_item">				<div><h1>Date<h1></div>													<input type="date" class="check_out search_input" name="date" placeholder="date" required>												</div>
 			<button class="button search_button">cheeck</button>											</form>										</div>					
 										<!-- Search Panel -->
@@ -376,10 +370,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					<div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
 						<div class="footer_nav">
 							<ul class="footer_nav_list">
-							   	<li class="main_nav_item"><a href="home">home</a></li>
-                                                                <li class="main_nav_item"><a href="get_ticket">show ticket</a></li>
-                                                                <li class="main_nav_item"><a href="book">book</a></li>
-                                                        	<li class="main_nav_item"><a href="logout">logout</a></li>
+							   	<li class="main_nav_item"><a href="{% url 'home' %}">home</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'get_ticket' %}">show ticket</a></li>
+                                                                <li class="main_nav_item"><a href="{% url 'book' %}">book</a></li>
+                                                        	<li class="main_nav_item"><a href="{% url 'logout' %}">logout</a></li>
 							</ul>
 						</div>
 					</div>

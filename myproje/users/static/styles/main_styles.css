@@ -751,13 +751,17 @@ section
 }
 
 
-.home
+div.home
 {
-	width: 100%;
+	width: 100% !important;
 	height: 70vh;
 }
 
-
+.homes
+{
+        width: 50%;
+        height: 20vh;
+}
 
 
 .home2
@@ -986,8 +990,6 @@ section
         z-index: 10px;
 }
 
-
-
 .search13
 {
         width: 100%;
@@ -995,9 +997,6 @@ section
         background: linear-gradient(to right,#fa9e1b, #8d4fff);
         z-index: 10px;
 }
-
-
-
 
 
 .search21

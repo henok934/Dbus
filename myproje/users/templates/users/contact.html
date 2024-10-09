@@ -38,8 +38,8 @@
 							</ul>
 						</div>
 						<div class="user_box ml-auto">
-							<div class="user_box_login user_box_link"><a href="login.html">login</a></div>
-							<div class="user_box_register user_box_link"><a href="registor.html">register</a></div>
+							<div class="user_box_login user_box_link"><a href="{% url 'login.html' %}">login</a></div>
+							<div class="user_box_register user_box_link"><a href="{% url 'registor.html' %}">register</a></div>
 						</div>
 					</div>
 				</div>
@@ -57,10 +57,10 @@
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="index.html">home</a></li>
-								<li class="main_nav_item"><a href="about.html">about us</a></li>
-								<li class="main_nav_item"><a href="offers.html">offers</a></li>
-								<li class="main_nav_item"><a href="blog.html">news</a></li>
+								<li class="main_nav_item"><a href="{% url 'index.html' %}">home</a></li>
+								<li class="main_nav_item"><a href="{% url 'about.html' %}">about us</a></li>
+								<li class="main_nav_item"><a href="{% url 'offers.html' %}">offers</a></li>
+								<li class="main_nav_item"><a href="{% url 'blog.html' %}">news</a></li>
 								<li class="main_nav_item"><a href="#">contact</a></li>
 							</ul>
 						</div>
@@ -107,11 +107,11 @@
 			<div class="menu_close_container"><div class="menu_close"></div></div>
 			<div class="logo menu_logo"><a href="#"><img src="../static/images/logo.png" alt=""></a></div>
 			<ul>
-				<li class="menu_item"><a href="index.html">home</a></li>
-				<li class="menu_item"><a href="about.html">about us</a></li>
-				<li class="menu_item"><a href="offers.html">offers</a></li>
-				<li class="menu_item"><a href="blog.html">news</a></li>
-				<li class="menu_item"><a href="comment.html">comment</a></li>
+				<li class="menu_item"><a href="{% url 'index.html' %}">home</a></li>
+				<li class="menu_item"><a href="{% url 'about.html' %}">about us</a></li>
+				<li class="menu_item"><a href="{% url 'offers.html' %}">offers</a></li>
+				<li class="menu_item"><a href="{% url 'blog.html' %}">news</a></li>
+				<li class="menu_item"><a href="{% url 'comment.html' %}">comment</a></li>
 				<li class="menu_item"><a href="#">contact</a></li>
 			</ul>
 		</div>
@@ -197,7 +197,7 @@
 							</li>
 							<li class="contact_info_item d-flex flex-row">
 								<div><div class="contact_info_icon"><img src="../static/images/message.svg" alt=""></div></div>
-								<div class="contact_info_text"><a href="mailto:contactme@gmail.com?Subject=Hello" target="_top">contactme@gmail.com</a></div>
+								<div class="contact_info_text"><a href="{% url 'mailto:contactme@gmail.com?Subject=Hello' %}" target="_top">contactme@gmail.com</a></div>
 							</li>
 							<li class="contact_info_item d-flex flex-row">
 								<div><div class="contact_info_icon"><img src="../static/images/planet-earth.svg" alt=""></div></div>
@@ -237,10 +237,10 @@
 					<div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
 						<div class="footer_nav">
 							<ul class="footer_nav_list">
-								<li class="footer_nav_item"><a href="index.html">home</a></li>
-								<li class="footer_nav_item"><a href="about.html">about us</a></li>
-								<li class="footer_nav_item"><a href="offers.html">offers</a></li>
-								<li class="footer_nav_item"><a href="blog.html">news</a></li>
+								<li class="footer_nav_item"><a href="{% url 'index.html' %}">home</a></li>
+								<li class="footer_nav_item"><a href="{% url 'about.html' %}">about us</a></li>
+								<li class="footer_nav_item"><a href="{% url 'offers.html' %}">offers</a></li>
+								<li class="footer_nav_item"><a href="{% url 'blog.html' %}">news</a></li>
 								<li class="footer_nav_item"><a href="#">contact</a></li>
 							</ul>
 						</div>
